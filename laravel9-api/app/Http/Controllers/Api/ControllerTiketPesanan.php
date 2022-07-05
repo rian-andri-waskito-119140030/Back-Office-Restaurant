@@ -85,37 +85,6 @@ class ControllerTiketPesanan extends Controller
         return new TiketPesananResource(true, 'Data Menu Ditemukan!', [$showjoin,$showjoin2]);
     }
 
-    public function update(Request $request, TiketPesanan $tiketpesanan)
-    {
-        //define validation rules
-        $validator = Validator::make($request->all(), [
-            'id' => 'required',
-            'status_pesanan' => 'required',
-        ]);
-
-        //check if validation fails
-        if ($validator->fails()) {
-            return response()->json($validator->errors(), 422);
-        }
-
-        //update post
-        $tiketpesanan -> update([
-            'id' => $request->id,
-            'status_pesanan' => $request->status_pesanan,
-        ]);
-
-        //return response
-        return new TiketPesananResource(true, 'Data Tiket Pesanan Diperbarui!', $tiketpesanan);
-    }
-    public function destroy(TiketPesanan $tiketpesanan)
-    {
-        //delete image
-
-        //delete post
-        $tiketpesanan->delete();
-
-        //return response
-        return new TiketPesananResource(true, 'Data Tiket Pesanan Berhasil Dihapus!', null);
-    }
+    
     
 }
