@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\ControllerTiketPesanan;
 use App\Http\Controllers\Api\ControllerPesanan;
 use App\Http\Controllers\Api\ControllerPesananSelesai;
 use App\Http\Controllers\Api\ControllerLaporanMasuk;
+use App\Http\Controllers\Api\ControllerTotalHarga;
 
 //posts
 
@@ -27,6 +28,8 @@ Route::apiResource('/laporanmasuk', ControllerLaporanMasuk::class);
 Route::post('/laporanmasuk/store', [ControllerLaporanMasuk::class, 'store']);
 Route::get('/laporanmasuk/show/{id_laporan_masuk}', [ControllerLaporanMasuk::class, 'show']);
 Route::post('/laporanmasuk/edit/{id_laporan_masuk}', [ControllerLaporanMasuk::class, 'edit']);
+Route::get('/totalharga/showharga', [ControllerTotalHarga::class, 'showharga']);
+Route::apiResource('/totalharga', ControllerTotalHarga::class);
 
 /*
 |--------------------------------------------------------------------------
