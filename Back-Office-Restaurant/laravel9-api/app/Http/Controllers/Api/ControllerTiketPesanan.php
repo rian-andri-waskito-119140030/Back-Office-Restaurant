@@ -78,11 +78,14 @@ class ControllerTiketPesanan extends Controller
             ->get();
         $showjoin2 = DB::table('pesanan')
             ->join('menu_dipesan', 'pesanan.id_pesanan', "=", 'menu_dipesan.id_pesanan')
-            ->join('tiket_pesanan', 'pesanan.id_pesanan', "=", 'tiket_pesanan.id')
-            ->select('pesanan.waktu_pesan','pesanan.no_meja','tiket_pesanan.status_pesanan',)
+            ->select('pesanan.waktu_pesan','pesanan.no_meja','pesanan.status',)
             ->get();
+        $data = array(
+            'showjoin' => $showjoin,
+            'showjoin2' => $showjoin2,
+        );
         //return single post as a resource
-        return new TiketPesananResource(true, 'Data Menu Ditemukan!', [$showjoin,$showjoin2]);
+        return new TiketPesananResource(true, 'Data Menu Ditemukan!', $data );
     }
 
     
