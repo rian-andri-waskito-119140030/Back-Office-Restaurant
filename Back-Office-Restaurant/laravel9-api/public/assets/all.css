@@ -1,3 +1,9 @@
+body{
+  overflow-x: hidden!important;
+  overflow-y: visible!important;
+}
+
+
 /*beranda*/
 
 <style>
@@ -217,13 +223,13 @@ a {
     height: 20px;
   } */
   .content .body-content {
-    width: 150%;
-    height: 80%;
+    width: 88%!important;
+    /* height: 80%;
     display: flex;
     display: inline-block;
     border-radius: 5px;
     border: thin solid #888;
-    white-space: nowrap;
+    white-space: nowrap; */
     
   }
   .content .body-content .content-utama {
@@ -253,8 +259,39 @@ a {
     margin-right: 5px;
     border-color: transparent;
   }
+  /* a.edit.btn.btn-success {
+    width: 100px;
+    height: 70px;
+    text-align: center;
+    background-color: #42d212;
+  }
+  a.edit.btn.btn-success:hover {
+    background-color: #42d212;
+    color: white;
+  }
+  a.delete.btn.btn-danger {
+    width: 100px;
+    height: 70px;
+    text-align: center;
+    background-color: #ff0000;
+  }
+  a.delete.btn.btn-danger:hover {
+    background-color: #ff0000;
+    color: white;
+  } */
 
-  .content-utama table {
+  /* ul.pagination {
+    width: 50%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  ul.pagination li {
+    display: inline-block;
+    margin: 0 5px;
+  } */
+  /* .content-utama table {
     margin: 20px;
     text-align: center;
     font-size: 12pt;
@@ -262,17 +299,17 @@ a {
   }
   td,
   th {
-    border: 1px solid #0f0e0e;
+    border: 2px solid #0f0e0e;
     padding: 8px;
-  }
+  } */
 
-  tr:nth-child(even) {
-    background-color:#DDDDDD ;
-  }
+  /* tr:nth-child(even) {
+    background-color:#6ECED9 ;
+  } */
   
-  table{
-    background-color: white;
-  }
+  /* table.table-bordered {
+    background-color: #6ECED9;
+  } */
   }
 </style>
 /*Menu*/
@@ -285,7 +322,18 @@ a {
         margin: 0;
         padding: 0;
       }
-
+      /* .card-header{
+        background-color: #6ECED9;
+      }
+      .btn-success {
+        background-color: #6ECED9;
+        color: black;
+        border: 0;
+        width: 77%;
+        height: 90%;
+        display: flex;
+        justify-content: center;
+      } */
       a {
         text-decoration: none;
 
@@ -390,7 +438,7 @@ a {
       cursor: pointer;
     }
  
-    .content-utama table {
+    /* .content-utama table {
       margin: 20px;
       text-align: center;
       font-size: 12pt;
@@ -400,11 +448,11 @@ a {
     th {
       border: 1px solid #0f0e0e;
       padding: 8px;
-    }
+    } */
 
-    tr:nth-child(even) {
+    /* tr:nth-child(even) {
       background-color: #dddddd;
-    }
+    } */
  
     .form-input {
       display: block;
@@ -435,7 +483,7 @@ a {
       font-size: 12pt;
       margin-bottom: 10px;
     }
-    .form-input .box form button {
+    /* .form-input .box form button {
       width: 100px;
       font-size: medium;
       padding: 5px;
@@ -443,13 +491,13 @@ a {
       cursor: pointer;
       border-color: transparent;
       text-align:center;
-    }
+    } */
     .form-input .box form button:hover {
       background-color: rgb(224, 216, 206);
     }
-    table {
+    /* table {
       background-color: white;
-    }
+    } */
   </style>
 /*Tambah Menu*/
 
@@ -570,7 +618,7 @@ a {
     border: solid white 1px;
     cursor: pointer;
   }
-  .content-utama table {
+  /* .content-utama table {
     margin: 20px;
     text-align: center;
     font-size: 12pt;
@@ -588,7 +636,7 @@ a {
   
   table{
     background-color: white;
-  }
+  } */
   .content .footer{
      background-color: white;
     padding: 30px;
@@ -890,7 +938,7 @@ a {
     border-color: transparent;
   }
 
-  .content-utama table {
+  /* .content-utama table {
     margin: 20px;
     text-align: center;
     font-size: 12pt;
@@ -908,7 +956,7 @@ a {
   
   table{
     background-color: white;
-  }
+  } */
   }
 </style>
 /*pesanan*/

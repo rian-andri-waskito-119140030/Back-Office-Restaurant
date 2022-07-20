@@ -34,14 +34,14 @@ class ControllerMenu extends Controller
             `deskripsi`
             ')->get();
             return Datatables::of($menu)
-            ->addColumn('gambar', function($row) {
-                $img = '<img src="'.$row->gambar.'" class="img-fluid">';
-                return $img;
-            })
-            ->addColumn('action', 'action')
-            ->rawColumns(['gambar','action'])
-            ->addIndexColumn()
-            ->make(true);
+                ->addColumn('gambar', function ($row) {
+                    $img = '<img src="' . $row->gambar . '" class="img-fluid">';
+                    return $img;
+                })
+                ->addColumn('action', 'action')
+                ->rawColumns(['gambar', 'action'])
+                ->addIndexColumn()
+                ->make(true);
         }
 
         return view('menu');
@@ -112,7 +112,7 @@ class ControllerMenu extends Controller
     public function update(Request $request, $id_menu)
     {
         //upload image
-           if ($request->hasFile('gambar')) {
+        if ($request->hasFile('gambar')) {
             $gambar = $request->file('gambar');
             $gambar->storeAs('public/menu', $gambar->hashName());
             $gambar = $gambar->hashName();
@@ -137,55 +137,55 @@ class ControllerMenu extends Controller
             $menu->deskripsi = $request->deskripsi;
             $menu->save();
         }
-    //    if ($request->hasFile('gambar')) {
-    //         $gambar = $request->file('gambar');
-    //         $gambar->storeAs('public/menu', $gambar->hashName());
-    //         $gambar = $gambar->hashName();
-    //         //delete old image
-    //         Storage::delete('public/menu/' . $request->gambar);
-    //         $menu = Menu::find($id_menu);
-    //         $menu->gambar = $gambar->hashName();
-    //         $menu->nama_menu = $request->nama_menu;
-    //         $menu->tipe_produk = $request->tipe_produk;
-    //         $menu->harga_modal = $request->harga_modal;
-    //         $menu->harga_jual = $request->harga_jual;
-    //         $menu->stok = $request->stok;
-    //         $menu->deskripsi = $request->deskripsi;
-    //         $menu->save();
-    //     } elseif ($request->has('nama_menu')) {
-    //         $menu = Menu::find($id_menu);
-    //         $menu->nama_menu = $request->nama_menu;
-    //         $menu->save();
-    //     } elseif ($request->has('tipe_produk')){
-    //         $menu = Menu::find($id_menu);
-    //         $menu->tipe_produk = $request->tipe_produk;
-    //         $menu->save();
-    //     } elseif ($request->has('harga_modal')){
-    //         $menu = Menu::find($id_menu);
-    //         $menu->harga_modal = $request->harga_modal;
-    //         $menu->save();
-    //     } elseif ($request->has('harga_jual')){
-    //         $menu = Menu::find($id_menu);
-    //         $menu->harga_jual = $request->harga_jual;
-    //         $menu->save();
-    //     } elseif ($request->has('stok')){
-    //         $menu = Menu::find($id_menu);
-    //         $menu->stok = $request->stok;
-    //         $menu->save();
-    //     } elseif ($request->has('deskripsi')){
-    //         $menu = Menu::find($id_menu);
-    //         $menu->deskripsi = $request->deskripsi;
-    //         $menu->save();
-    //     } else {
-    //         return response()->json(['error' => 'Tidak ada data yang diubah'], 422);
-    //     }
-        
+        //    if ($request->hasFile('gambar')) {
+        //         $gambar = $request->file('gambar');
+        //         $gambar->storeAs('public/menu', $gambar->hashName());
+        //         $gambar = $gambar->hashName();
+        //         //delete old image
+        //         Storage::delete('public/menu/' . $request->gambar);
+        //         $menu = Menu::find($id_menu);
+        //         $menu->gambar = $gambar->hashName();
+        //         $menu->nama_menu = $request->nama_menu;
+        //         $menu->tipe_produk = $request->tipe_produk;
+        //         $menu->harga_modal = $request->harga_modal;
+        //         $menu->harga_jual = $request->harga_jual;
+        //         $menu->stok = $request->stok;
+        //         $menu->deskripsi = $request->deskripsi;
+        //         $menu->save();
+        //     } elseif ($request->has('nama_menu')) {
+        //         $menu = Menu::find($id_menu);
+        //         $menu->nama_menu = $request->nama_menu;
+        //         $menu->save();
+        //     } elseif ($request->has('tipe_produk')){
+        //         $menu = Menu::find($id_menu);
+        //         $menu->tipe_produk = $request->tipe_produk;
+        //         $menu->save();
+        //     } elseif ($request->has('harga_modal')){
+        //         $menu = Menu::find($id_menu);
+        //         $menu->harga_modal = $request->harga_modal;
+        //         $menu->save();
+        //     } elseif ($request->has('harga_jual')){
+        //         $menu = Menu::find($id_menu);
+        //         $menu->harga_jual = $request->harga_jual;
+        //         $menu->save();
+        //     } elseif ($request->has('stok')){
+        //         $menu = Menu::find($id_menu);
+        //         $menu->stok = $request->stok;
+        //         $menu->save();
+        //     } elseif ($request->has('deskripsi')){
+        //         $menu = Menu::find($id_menu);
+        //         $menu->deskripsi = $request->deskripsi;
+        //         $menu->save();
+        //     } else {
+        //         return response()->json(['error' => 'Tidak ada data yang diubah'], 422);
+        //     }
+
         //return response
         return redirect()->route('menu.index')->with('success', 'Menu berhasil diubah');
     }
     public function delete(Request $request)
     {
-        
+
         $menu = Menu::find($request->id_menu);
         // dd($request->all());
         $menu->delete();
@@ -201,7 +201,7 @@ class ControllerMenu extends Controller
     //     $menu = Menu::where('id_menu',$request->id_menu)->delete();
     //     return redirect()->route('menu.index')->with('success', 'Menu berhasil dihapus');
     // }
-     /**
+    /**
      * show
      *
      * @param  mixed $post
@@ -223,7 +223,7 @@ class ControllerMenu extends Controller
 
         return new MenuResource(true, 'List Data Menu', $menu);
     }
-    
+
     // /**
     //  * update
     //  *
@@ -286,14 +286,14 @@ class ControllerMenu extends Controller
     //     //return response
     //     return new MenuResource(true, 'Data Menu Berhasil Diubah!', $menu);
     // }
-    
+
     // /**
     //  * destroy
     //  *
     //  * @param  mixed $post
     //  * @return void
     //  */
-    
+
 
     // public function showtypemakanan(Request $request)
     // {
@@ -303,7 +303,7 @@ class ControllerMenu extends Controller
     //     //return single post as a resource
     //     return new MenuResource(true, 'Data Menu Ditemukan!', $result);
     // }
-    
+
     // public function showtypeminuman(Request $request){
     //     $result = DB::table('menu')->Select('gambar','nama_menu','tipe_produk','harga_modal','harga_jual','stok','deskripsi')
     //     ->where('tipe_produk', '=', 'minuman')
