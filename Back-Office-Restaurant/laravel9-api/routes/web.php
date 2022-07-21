@@ -6,6 +6,8 @@ use App\Http\Controllers\Api\ControllerPesanan;
 use App\Http\Controllers\Api\ControllerPesananSelesai;
 use App\Http\Controllers\Api\ControllerLaporanMasuk;
 use App\Http\Controllers\Api\ControllerFeedback;
+use App\Http\Controllers\Api\ControllerDiskon;
+use App\Http\Controllers\Api\ControllerKategori;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,6 +20,7 @@ use App\Http\Controllers\Api\ControllerFeedback;
 */
 
 Route::get('menu/delete', [ControllerMenu::class, 'delete'])->name('menu.delete');
+Route::get('laporanmasuk/delete', [ControllerLaporanMasuk::class, 'delete'])->name('laporanmasuk.delete');
 // Route::get('menu', [ControllerMenu::class, 'index'])->name('menu.index');
 Route::resource('menu', ControllerMenu::class);
 Route::resource('pesananselesai', ControllerPesananSelesai::class);
@@ -25,9 +28,13 @@ Route::resource('pesananselesai', ControllerPesananSelesai::class);
 Route::resource('pesanan', ControllerPesanan::class);
 Route::resource('laporanmasuk', ControllerLaporanMasuk::class);
 Route::resource('feedback-menu', ControllerFeedback::class);
+Route::resource('diskon', ControllerDiskon::class);
+Route::resource('kategori', ControllerKategori::class);
 Route::get('edit-pesanan/{id_pesanan}', [ControllerPesanan::class, 'edit']);
 Route::put('update-status/{id_pesanan}', [ControllerPesanan::class, 'update']);
 Route::get('pesanan-datang', [ControllerPesanan::class, 'index']);
+Route::get('diskon-menu', [ControllerDiskon::class, 'index'])->name('diskon-menu.index');
+Route::get('tampil-diskon', [ControllerDiskon::class, 'tampildiskon'])->name('tampil-diskon.tampildiskon');
 Route::get('', [ControllerPesanan::class, 'index']);
 Route::get('pesanan-selesai', [ControllerPesananSelesai::class, 'index']);
 Route::get('laporanmasuk', [ControllerLaporanMasuk::class, 'index']);
@@ -66,4 +73,16 @@ Route::get('/laporanmasuk', function () {
 });
 Route::get('/feedback', function () {
     return view('feedback');
+});
+Route::get('/editlaporan', function () {
+    return view('editlaporan');
+});
+Route::get('/unduhlaporan', function () {
+    return view('unduhlaporan');
+});
+Route::get('/diskon', function () {
+    return view('diskon');
+});
+Route::get('/tampildiskon', function () {
+    return view('tampildiskon');
 });

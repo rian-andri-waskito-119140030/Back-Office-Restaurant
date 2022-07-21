@@ -7,8 +7,6 @@
   <link rel="icon" href="https://img2.pngdownload.id/20180618/jup/kisspng-computer-icons-document-logo-raport-5b2730482286a6.2061352515292949201414.jpg" type="image/x-icon" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
-  <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.dataTables.min.css">
   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css"> -->
   <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" /> -->
   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/css/tempusdominus-bootstrap-4.min.css" /> -->
@@ -21,12 +19,6 @@
   <script type="text/javascript" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
   <script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.0/moment.min.js"></script>
-  <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
-  <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
-  <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js"></script>
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/js/tempusdominus-bootstrap-4.min.js"></script> -->
   <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/all.css'); }}">
   <title>Laporan</title>
@@ -59,6 +51,7 @@
         <div class="row">
           <div class="col-12 text-center">
             <a href="{{ url('/laporanmasuk') }}"><button class="btn btn-large btn-success">Tambah Laporan</button></a>
+            <a href="{{ url('/unduhlaporan') }}"><button class="btn btn-large btn-success">Unduh Laporan</button></a>
 
 
           </div>
@@ -66,7 +59,7 @@
 
         <div class="card-body">
           <div class="table-responsive">
-            <table id="example2" class="table table-bordered data-table" style="background-color: #6ECED9; margin-left:auto; margin-right:auto;">
+            <table id="example2" class="table table-bordered data-table" style="background-color: #6ECED9;">
               <thead style="background-color: black;">
                 <tr>
                   <th style="color: white">No</th>
@@ -74,7 +67,7 @@
                   <th style="color: white">Tanggal</th>
                   <th style="color: white">Pemasukan</th>
 
-                  <!-- <th width="20%" style="color: white">Action</th> -->
+                  <th width="20%" style="color: white">Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -117,37 +110,37 @@
           name: 'pemasukan'
         },
 
-        // {
-        //   data: 'action',
-        //   name: 'action',
-        //   orderable: false,
-        //   searchable: false
-        // },
+        {
+          data: 'action',
+          name: 'action',
+          orderable: false,
+          searchable: false
+        },
       ],
-      dom: 'Bfrtip',
-      buttons: [
-        'copy', 'csv', 'excel', 'pdf', 'print'
-      ]
+      // dom: 'Bfrtip',
+      // buttons: [
+      //   'copy', 'csv', 'excel', 'pdf', 'print'
+      // ]
     });
 
-    $(document).ready(function() {
-      $('#example').DataTable({
-        dom: 'Bfrtip',
-        buttons: [
-          'copy', 'csv', 'excel', 'pdf', 'print'
-        ]
-      });
-    });
+    // $(document).ready(function() {
+    //   $('#example').DataTable({
+    //     dom: 'Bfrtip',
+    //     buttons: [
+    //       'copy', 'csv', 'excel', 'pdf', 'print'
+    //     ]
+    //   });
+    // });
     $('body').on('click', '.delete', function() {
       if (confirm("Delete Record?") == true) {
-        var id_menu = $(this).attr('data-id');
+        var id_laporan_masuk = $(this).attr('data-id');
         console.log("{{ csrf_token() }}");
         // ajax
         $.ajax({
           type: "GET",
-          url: "{{ route('menu.delete') }}",
+          url: "{{ route('laporanmasuk.delete') }}",
           data: {
-            id_menu: id_menu,
+            id_laporan_masuk: id_laporan_masuk,
             _token: "{{ csrf_token() }}",
           },
           dataType: 'json',

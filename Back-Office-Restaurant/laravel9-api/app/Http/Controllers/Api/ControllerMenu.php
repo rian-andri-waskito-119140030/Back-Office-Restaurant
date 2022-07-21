@@ -38,8 +38,16 @@ class ControllerMenu extends Controller
                     $img = '<img src="' . $row->gambar . '" class="img-fluid">';
                     return $img;
                 })
+                ->addColumn('harga_modal', function ($row) {
+                    $harga = 'Rp. ' . number_format($row->harga_modal, 0, ',', '.');
+                    return $harga;
+                })
+                ->addColumn('harga_jual', function ($row) {
+                    $harga = 'Rp. ' . number_format($row->harga_jual, 0, ',', '.');
+                    return $harga;
+                })
                 ->addColumn('action', 'action')
-                ->rawColumns(['gambar', 'action'])
+                ->rawColumns(['gambar', 'harga_modal', 'harga_jual', 'action'])
                 ->addIndexColumn()
                 ->make(true);
         }

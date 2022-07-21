@@ -48,10 +48,12 @@
 
     <div class="body-content bg-white py-5">
       <div class="container">
-        <div class="row">
+        <div class="row ml-5">
           <div class="col-12 text-center">
 
             <a href="{{ url('/tambahmenu') }}"><button class="btn btn-large btn-success">Tambah Menu</button></a>
+            <a href="{{ route('kategori.index') }}"><button class="btn btn-large btn-success">Tambah Diskon Menu</button></a>
+            <a href="{{ url('/tampildiskon') }}"><button class="btn btn-large btn-success">Diskon Menu</button></a>
 
           </div>
         </div>
