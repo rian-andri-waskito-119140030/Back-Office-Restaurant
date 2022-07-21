@@ -17,19 +17,40 @@ class ControllerPesanan extends Controller
     {
         //get posts
         $pesanan = Pesanan::oldest();
-        $pesanan = DB::select('SELECT * FROM pesanan');
+        $pesanan = DB::table('menu_dipesan')
+            ->join('pesanan', 'menu_dipesan.id_pesanan', '=', 'pesanan.id_pesanan')
+            ->join('menu', 'menu_dipesan.id_menu', '=', 'menu.id_menu')
+            ->select('menu_dipesan.jumlah', 'menu.nama_menu', 'pesanan.status', 'pesanan.waktu_pesan', 'pesanan.id_pesanan')
+            ->get();
+        //dd($pesanan);
 
-        //return collection of posts as a resource
-        return new PesananResource(true, 'List Data Pesanan', $pesanan);
+        return response()->json([
+            'status' => 'success',
+            'pesanan' => $pesanan,
+        ]);
     }
 
-    public function show($id_pesanan){
-        $pesanan = DB::select('SELECT * FROM pesanan WHERE id_pesanan = ?', [$id_pesanan]);
-
-        return new PesananResource(true, 'List Data Pesanan', $pesanan);
+    public function edit($id_pesanan)
+    {
+        $pesanan = Pesanan::find($id_pesanan);
+        if ($pesanan) {
+            return response()->json([
+                'status' => 200,
+                'pesanan' => $pesanan
+            ]);
+        } else {
+            return response()->json([
+                'status' => 404,
+                'message' => 'not found'
+            ]);
+        }
     }
+    // {
+    //     return view('editpesanan', compact('pesanan'));
+    // }
 
-    public function edit(Request $request, $id_pesanan){
+    public function update(Request $request, $id_pesanan)
+    {
         $validator = Validator::make($request->all(), [
             'status' => 'required',
         ]);
@@ -38,12 +59,15 @@ class ControllerPesanan extends Controller
             return response()->json($validator->errors(), 422);
         }
 
-        $status = $request->status;
-
-        DB::update('UPDATE pesanan SET status = ? WHERE id_pesanan = ?', [$status, $id_pesanan]);
-
-        return new PesananResource(true, 'Data Pesanan Diubah!', $status);
+        $pesanan = Pesanan::find($id_pesanan);
+        $pesanan->update(
+            [
+                'status' => $request->status
+            ]
+        );
+        return response()->json([
+            'status' => 200,
+            'message' => 'success'
+        ]);
     }
-
-   
 }
