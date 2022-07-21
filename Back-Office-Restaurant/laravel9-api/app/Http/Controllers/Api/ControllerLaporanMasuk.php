@@ -21,10 +21,13 @@ class ControllerLaporanMasuk extends Controller
         if ($request->ajax()) {
             $laporanmasuk = DB::table('laporan_masuk')->select('*')->get();
             return DataTables::of($laporanmasuk)
-                // ->addColumn('action', function($laporanmasuk){
-                //     return '<a href="'.route('laporanmasuk.edit', $laporanmasuk->id_laporanmasuk).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
-                // })
-                // ->rawColumns(['action'])
+                ->addColumn('pemasukan', function ($row) {
+                    $harga = 'Rp. ' . number_format($row->pemasukan, 0, ',', '.');
+                    return $harga;
+                })
+                ->addColumn('action', 'aksi')
+                ->rawColumns(['pemasukan', 'action'])
+
                 ->addIndexColumn()
                 ->make(true);
         }
@@ -67,23 +70,45 @@ class ControllerLaporanMasuk extends Controller
         return new LaporanMasukResource(true, 'List Data Laporan Masuk', $laporanmasuk);
     }
 
-    public function edit(Request $request, $id_laporan_masuk)
+    public function edit(LaporanMasuk $laporanmasuk)
+    {
+        return view('editlaporan', compact('laporanmasuk'));
+    }
+
+    public function update(Request $request, $id_laporan_masuk)
     {
         date_default_timezone_set('Asia/Jakarta');
+        //define validation rules
+        $validator = Validator::make($request->all(), [
+            'hari'     => 'required',
+            'pemasukan'   => 'required',
+        ]);
 
-        if ($request->has('hari')) {
-            $laporanmasuk = LaporanMasuk::find($id_laporan_masuk);
-            $laporanmasuk->hari = $request->hari;
-            $laporanmasuk->save();
-        } elseif ($request->has('pemasukan')) {
-            $laporanmasuk = LaporanMasuk::find($id_laporan_masuk);
-            $laporanmasuk->pemasukan = $request->pemasukan;
-            $laporanmasuk->save();
-        } elseif ($request->has('tanggal')) {
-            $laporanmasuk = LaporanMasuk::find($id_laporan_masuk);
-            $laporanmasuk->tanggal = $request->tanggal;
-            $laporanmasuk->save();
+        //check if validation fails
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
         }
-        return new LaporanMasukResource(true, 'Data Laporan Masuk Diubah!', $laporanmasuk);
+
+        //create post
+        $laporanmasuk = LaporanMasuk::find($id_laporan_masuk);
+        $laporanmasuk->hari = $request->hari;
+        // $laporanmasuk->tanggal = Carbon::now();
+        $laporanmasuk->pemasukan = $request->pemasukan;
+        $laporanmasuk->save();
+
+        return redirect()->route('laporanmasuk.index')->with('success', 'Menu berhasil diubah');
+    }
+    // {
+    //     $laporan->update($request->all());
+    //     return redirect()->route('laporanmasuk.index')->with('success', 'Menu berhasil diubah');
+    // }
+
+    public function delete(Request $request)
+    {
+
+        $laporanmasuk = LaporanMasuk::find($request->id_laporan_masuk);
+        // dd($request->all());
+        $laporanmasuk->delete();
+        return Response()->json($laporanmasuk);
     }
 }

@@ -31,8 +31,12 @@ class ControllerPesananSelesai extends Controller
                 ->where('pesanan.status', '=', 'selesai')
                 ->get();
             return DataTables::of($pesananselesai)
-                // ->addColumn('action', 'action')
-                // ->rawColumns(['action'])
+                ->addColumn('total_harga', function ($row) {
+                    $harga = 'Rp. ' . number_format($row->total_harga, 0, ',', '.');
+                    return $harga;
+                })
+
+                ->rawColumns(['total_harga'])
                 ->addIndexColumn()
                 ->make(true);
         }
