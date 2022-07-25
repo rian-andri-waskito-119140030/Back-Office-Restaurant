@@ -22,6 +22,9 @@ class ControllerPesanan extends Controller
             ->join('menu', 'menu_dipesan.id_menu', '=', 'menu.id_menu')
             ->select('menu_dipesan.jumlah', 'menu.nama_menu', 'pesanan.status', 'pesanan.waktu_pesan', 'pesanan.id_pesanan')
             ->get();
+        // if ($pesanan->id_pesanan == $pesanan->id_pesanan) {
+        //     dd($pesanan);
+        // }
         //dd($pesanan);
 
         return response()->json([

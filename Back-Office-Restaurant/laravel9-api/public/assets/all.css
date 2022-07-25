@@ -2,6 +2,7 @@ body{
   overflow-x: hidden!important;
   overflow-y: visible!important;
   background-image: 'url(../images/resto.png)'!important;
+  font-style: Arial, Helvetica, sans-serif!important;
 }
 
 

@@ -125,27 +125,27 @@
         //         ]
         //     });
         // });
-        $('body').on('click', '.delete', function() {
-            if (confirm("Delete Record?") == true) {
-                var id_menu = $(this).attr('data-id');
-                console.log("{{ csrf_token() }}");
-                // ajax
-                $.ajax({
-                    type: "GET",
-                    url: "{{ route('menu.delete') }}",
-                    data: {
-                        id_menu: id_menu,
-                        _token: "{{ csrf_token() }}",
-                    },
-                    dataType: 'json',
-                    success: function(res) {
-                        // var oTable = $('#example2').dataTable();
-                        // oTable.fnDraw(true);
-                        $('#example2').DataTable().ajax.reload();
-                    }
-                });
-            }
-        });
+        // $('body').on('click', '.delete', function() {
+        //     if (confirm("Delete Record?") == true) {
+        //         var id_menu = $(this).attr('data-id');
+        //         console.log("{{ csrf_token() }}");
+        //         // ajax
+        //         $.ajax({
+        //             type: "GET",
+        //             url: "{{ route('menu.delete') }}",
+        //             data: {
+        //                 id_menu: id_menu,
+        //                 _token: "{{ csrf_token() }}",
+        //             },
+        //             dataType: 'json',
+        //             success: function(res) {
+        //                 // var oTable = $('#example2').dataTable();
+        //                 // oTable.fnDraw(true);
+        //                 $('#example2').DataTable().ajax.reload();
+        //             }
+        //         });
+        //     }
+        // });
     });
 </script>
 

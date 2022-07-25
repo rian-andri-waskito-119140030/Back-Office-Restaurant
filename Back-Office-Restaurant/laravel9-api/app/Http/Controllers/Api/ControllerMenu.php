@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\URL;
 use DataTables;
+use App\Http\Controllers\Api\toString;
+use App\Http\Controllers\Api\toLowerCase;
 
 class ControllerMenu extends Controller
 {
@@ -46,8 +48,12 @@ class ControllerMenu extends Controller
                     $harga = 'Rp. ' . number_format($row->harga_jual, 0, ',', '.');
                     return $harga;
                 })
+                ->addColumn('tipe_produk', function ($row) {
+                    $tipe = '<div style="text-transform: lowercase;">' . $row->tipe_produk . '</div>';
+                    return $tipe;
+                })
                 ->addColumn('action', 'action')
-                ->rawColumns(['gambar', 'harga_modal', 'harga_jual', 'action'])
+                ->rawColumns(['gambar', 'tipe_produk', 'harga_modal', 'harga_jual', 'action'])
                 ->addIndexColumn()
                 ->make(true);
         }

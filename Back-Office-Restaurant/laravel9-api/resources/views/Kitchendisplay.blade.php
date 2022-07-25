@@ -120,11 +120,7 @@
         success: function(response) {
           //console.log(response.pesanan);
           for (var i = 0; i < response.pesanan.length; i++) {
-            if (response.pesanan[i].id_pesanan == response.pesanan[i].id_pesanan) {
-              //const hitung = response.pesanan[i].id_pesanan.length;
-              console.log(response.pesanan[i].id_pesanan.length);
 
-            }
             if (response.pesanan[i].status == 'di masak' || response.pesanan[i].status == 'di pesan') {
 
               var html = '<div class="col-md-4 mb-3 mt-3">' +
@@ -132,19 +128,12 @@
                 '<div class="card-header" style="border-bottom: 5px solid black ;">' +
                 '<h5 class="my-2">Pesanan ' + [i + 1] + '</h5>' +
                 '</div>' +
-                '<div class="card-body">'
-              if (response.pesanan[i].id_pesanan == response.pesanan[i].id_pesanan) {
-                html += '<p>Nama Menu = ' + response.pesanan[i].nama_menu + '</p>' +
-                  '<p>Jumlah = ' + response.pesanan[i].jumlah + '</p>'
-              } else {
-                html += '<p>Nama Menu = ' + response.pesanan[i].nama_menu + '</p>' +
-                  '<p>Jumlah = ' + response.pesanan[i].jumlah + '</p>'
-                // '<p>Status = ' + response.pesanan[i].status + '</p>' +
-                // '<p>ID Pesanan = ' + response.pesanan[i].id_pesanan + '</p>'
-              }
-              // '<p>Nama Menu = ' + response.pesanan[i].nama_menu + '</p>' +
-              //   '<p>Jumlah = ' + response.pesanan[i].jumlah + '</p>' +
-              '<button type="button" value="' + response.pesanan[i].id_pesanan + '" class="edit_pesanan btn btn-primary btn-m">' + response.pesanan[i].status + '</button>' +
+                '<div class="card-body">' +
+
+                '<p>Nama Menu = ' + response.pesanan[i].nama_menu + '</p>' +
+                '<p>Jumlah = ' + response.pesanan[i].jumlah + '</p>' +
+
+                '<button type="button" value="' + response.pesanan[i].id_pesanan + '" class="edit_pesanan btn btn-primary btn-m">' + response.pesanan[i].status + '</button>' +
                 '</div>' +
                 '</div>' +
                 '</div>';

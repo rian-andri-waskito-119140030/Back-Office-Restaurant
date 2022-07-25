@@ -7,6 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://kit.fontawesome.com/25495e258e.js" crossorigin="anonymous"></script>
   <link rel="icon" href="https://www.freepnglogos.com/uploads/logo-home-png/chimney-home-icon-transparent-1.png" type="image/x-icon" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/fontawesome.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" />
   <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/all.css'); }}">
 
   <title>BERANDA</title>
@@ -83,6 +85,7 @@
   * {
     margin: 0;
     padding: 0;
+    font-style: Arial, Helvetica, sans-serif !important;
   }
 
   a {

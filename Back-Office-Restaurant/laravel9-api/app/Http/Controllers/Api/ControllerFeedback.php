@@ -27,6 +27,7 @@ class ControllerFeedback extends Controller
             // ->select('menu.nama_menu', 'feedback.isi_feedback')
 
             ->get();
+        //dd($feedback);
         if ($request->ajax()) {
             return DataTables::of($feedback)
                 ->addIndexColumn()

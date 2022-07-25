@@ -60,6 +60,7 @@
                                 <tr>
                                     <th style="color: white">No</th>
                                     <th style="color: white">Nama Menu</th>
+                                    <th style="color: white">Nama Diskon</th>
                                     <th style="color: white">Harga Jual</th>
                                     <th style="color: white">
                                         Harga Diskon
@@ -105,6 +106,10 @@
                 {
                     data: "nama_menu",
                     name: "nama_menu",
+                },
+                {
+                    data: "nama_diskon",
+                    name: "nama_diskon",
                 },
                 {
                     data: "harga_jual",
