@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 20 Jul 2022 pada 06.59
+-- Waktu pembuatan: 26 Jul 2022 pada 04.07
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 8.1.5
 
@@ -20,6 +20,34 @@ SET time_zone = "+00:00";
 --
 -- Database: `laravel`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `diskon`
+--
+
+CREATE TABLE `diskon` (
+  `id_diskon` bigint(20) UNSIGNED NOT NULL,
+  `id_menu` bigint(20) UNSIGNED NOT NULL,
+  `nama_diskon` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `diskon` double(20,4) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `diskon`
+--
+
+INSERT INTO `diskon` (`id_diskon`, `id_menu`, `nama_diskon`, `diskon`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Diskon Lebaran', 0.0500, '2022-07-20 21:34:41', '2022-07-20 21:34:41'),
+(2, 1, 'Diskon Lebaran', 0.0500, '2022-07-20 21:38:18', '2022-07-20 21:38:18'),
+(3, 1, 'Diskon Lebaran', 0.0500, '2022-07-20 21:39:30', '2022-07-20 21:39:30'),
+(4, 16, 'Diskon Tahun Baru', 0.1000, '2022-07-20 21:40:40', '2022-07-20 21:40:40'),
+(5, 13, 'Diskon Lebaran', 0.5000, '2022-07-21 00:43:56', '2022-07-21 00:43:56'),
+(6, 19, 'Diskon Natal', 0.0090, '2022-07-21 00:55:42', '2022-07-21 00:55:42'),
+(7, 27, 'Diskon 17 Agustus', 0.0200, '2022-07-21 21:27:06', '2022-07-21 21:27:06');
 
 -- --------------------------------------------------------
 
@@ -56,30 +84,12 @@ CREATE TABLE `feedback` (
 --
 
 INSERT INTO `feedback` (`id_feedback`, `id_pesanan`, `isi_feedback`, `created_at`, `updated_at`) VALUES
-(4, 1, 'tes', '2022-07-18 23:21:17', '2022-07-18 23:21:17'),
-(5, 1, 'tes 34', '2022-07-18 23:24:13', '2022-07-18 23:24:13'),
-(6, 1, 'fffer', '2022-07-18 23:31:41', '2022-07-18 23:31:41'),
-(7, 1, 'ddsdssdf', '2022-07-19 00:58:49', '2022-07-19 00:58:49'),
-(8, 1, 'ddsdssdf', '2022-07-19 01:00:38', '2022-07-19 01:00:38'),
-(9, 1, 'ddsdssdf', '2022-07-19 01:02:15', '2022-07-19 01:02:15'),
-(10, 1, 'ddsdssdf', '2022-07-19 01:02:32', '2022-07-19 01:02:32'),
-(11, 1, 'ddsdssdf', '2022-07-19 01:06:15', '2022-07-19 01:06:15'),
-(12, 1, 'ddsdssdf', '2022-07-19 01:06:21', '2022-07-19 01:06:21'),
-(13, 1, 'tes aja', '2022-07-19 01:06:43', '2022-07-19 01:06:43'),
-(14, 1, '12', '2022-07-19 21:39:09', '2022-07-19 21:39:09'),
-(15, 1, 's', '2022-07-19 21:39:14', '2022-07-19 21:39:14'),
-(16, 1, 's', '2022-07-19 21:42:27', '2022-07-19 21:42:27'),
-(17, 1, 'tes', '2022-07-19 21:42:33', '2022-07-19 21:42:33'),
-(18, 1, 'tes', '2022-07-19 21:46:02', '2022-07-19 21:46:02'),
-(19, 1, 's', '2022-07-19 21:47:26', '2022-07-19 21:47:26'),
-(20, 1, 's', '2022-07-19 21:48:39', '2022-07-19 21:48:39'),
-(21, 1, 'ss', '2022-07-19 21:51:52', '2022-07-19 21:51:52'),
-(22, 1, 'ss', '2022-07-19 21:52:58', '2022-07-19 21:52:58'),
-(23, 1, 's', '2022-07-19 21:55:52', '2022-07-19 21:55:52'),
-(24, 1, 's', '2022-07-19 21:58:26', '2022-07-19 21:58:26'),
-(25, 1, 's', '2022-07-19 21:58:38', '2022-07-19 21:58:38'),
-(26, 1, 'wwwwq', '2022-07-19 21:58:47', '2022-07-19 21:58:47'),
-(27, 1, 'wwwwq', '2022-07-19 21:58:53', '2022-07-19 21:58:53');
+(31, 1, 'fffer', '2022-07-21 02:13:56', '2022-07-21 02:13:56'),
+(32, 1, 'fffer', '2022-07-21 02:28:47', '2022-07-21 02:28:47'),
+(33, 156, 'hahahahahaha', '2022-07-22 02:12:23', '2022-07-22 02:12:23'),
+(34, 1, 'sipp makanan anda enak', '2022-07-21 20:55:16', '2022-07-21 20:55:16'),
+(35, 1, 'sipp makanan anda enak', '2022-07-21 20:57:42', '2022-07-21 20:57:42'),
+(36, 1, 'segfjhdytukyugrhf', '2022-07-25 00:21:31', '2022-07-25 00:21:31');
 
 -- --------------------------------------------------------
 
@@ -114,11 +124,12 @@ CREATE TABLE `laporan_masuk` (
 --
 
 INSERT INTO `laporan_masuk` (`id_laporan_masuk`, `hari`, `tanggal`, `pemasukan`, `created_at`, `updated_at`) VALUES
-(1, 'senin', '1970-01-01 00:00:00', 10000, '2022-07-01 03:14:51', '2022-07-01 03:14:51'),
+(1, 'senin', '1970-01-01 00:00:00', 13000, '2022-07-01 03:14:51', '2022-07-20 08:45:31'),
 (2, 'senin', '2022-07-01 00:00:00', 30000, '2022-07-01 03:15:44', '2022-07-04 04:21:08'),
 (3, 'senin', '2022-07-01 10:17:52', 20000, '2022-07-01 03:17:52', '2022-07-01 03:17:52'),
 (4, 'selasa', '2022-07-19 13:16:50', 30000, '2022-07-19 06:16:50', '2022-07-19 06:16:50'),
-(5, 'rabu', '2022-07-19 13:58:04', 12, '2022-07-19 06:58:04', '2022-07-19 06:58:04');
+(6, 'rabu', '2022-07-20 16:21:17', 150000, '2022-07-20 09:21:17', '2022-07-20 09:21:17'),
+(7, 'Jumat', '2022-07-22 11:28:26', 12000000, '2022-07-22 04:28:26', '2022-07-22 04:28:26');
 
 -- --------------------------------------------------------
 
@@ -139,7 +150,8 @@ CREATE TABLE `meja` (
 
 INSERT INTO `meja` (`no_meja`, `nama_meja`, `created_at`, `updated_at`) VALUES
 (1, 'Meja 1', '2022-07-06 02:34:53', '2022-07-06 02:34:53'),
-(2, 'Meja 2', '2022-07-06 02:42:07', '2022-07-06 02:42:07');
+(2, 'Meja 2', '2022-07-06 02:42:07', '2022-07-06 02:42:07'),
+(3, 'Meja 3', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -165,19 +177,22 @@ CREATE TABLE `menu` (
 --
 
 INSERT INTO `menu` (`id_menu`, `gambar`, `nama_menu`, `tipe_produk`, `harga_modal`, `harga_jual`, `stok`, `deskripsi`, `created_at`, `updated_at`) VALUES
-(1, 'LnGcY1ojyVM9pS1O3exE759WpzGgV6RPS1E47I1C.jpg', 'nasi goreng', 'makanan', 10000, 12000, 110, 'nasi, ayam, timun, sambal', '2022-06-28 22:33:05', '2022-07-13 23:17:40'),
-(12, 'RXRtJr15lojvB5djZA8c20Git92A5v5VvVoY5LMo.jpg', 'Jus', 'Minuman', 7000, 10000, 700, 'Jus Apel', '2022-07-12 19:39:34', '2022-07-12 19:39:50'),
-(13, 'Wk2h8tDvwL4YYMVYJEEghJ1P4YxNbaG1Cuw1lYj4.jpg', 'Sate', 'Makanan', 7000, 10000, 100, 'Sate Sapi, Sate Ayam, Sate Kambing', '2022-07-13 19:34:36', '2022-07-13 19:34:36'),
-(16, 'Wr3ojtGMZhsvwPwjV2J2IouLLc0MYyvj3BEO08Bh.jpg', 'Ayam Geprek', 'Makanan', 8000, 12000, 300, 'Pedes, Enak, Nagih', '2022-07-13 23:17:22', '2022-07-13 23:17:22'),
-(17, 'EqV9cbtyVodws0UL9ZmHz4umikLz2Wv7RKjdV1Co.jpg', 'Es Krim', 'Dessert', 5000, 10000, 700, 'Coklat, Vanilla', '2022-07-17 19:28:01', '2022-07-17 19:28:01'),
-(18, 'WRmxysZzU64SM55yGEZZh3ngSKok0gdI7jSbjdR5.jpg', 'Boba', 'Minuman', 7000, 10000, 150, 'boba', '2022-07-18 00:58:57', '2022-07-18 00:59:15'),
-(19, 'tXatFPzPOMNzjZaO5CZm6tUD660UZcrYbuRjBvoo.jpg', 'Ayam Bensu', 'Makanan', 10000, 12000, 2, 'Ayam lezat', '2022-07-18 01:50:01', '2022-07-18 01:50:01'),
-(20, '9AUmbNsLWXQYFsNI21DL5W3FFJTGI7vxq3HKrsAI.jpg', 'Nasi Goreng', 'makanan', 5000, 10000, 90, 'Nasi Goreng Enak', '2022-07-18 19:41:08', '2022-07-18 19:41:08'),
-(21, 'qdeenKFRrQHfivv37cPFtTBYkPkJOdrAe4SDXS46.jpg', 'Cokelat', 'dessert', 5000, 7000, 50, 'Dessert Box Chocolate', '2022-07-19 01:10:20', '2022-07-19 01:10:20'),
-(22, 'QIsMhb2ShmmIH4ueJjUjmHQvvcOpqraMjozEsVPZ.jpg', 'pop sugar', 'dessert', 7000, 12000, 90, 'Dessert Nikmat, Mulai dari Stroberi Hingga Krim Karamel', '2022-07-19 01:12:42', '2022-07-19 01:12:42'),
-(23, 'ptk5VABXzj0hurtIhiQqig9FeDX597mOPPvmBX7P.jpg', 'Es Teler Dessert Box', 'dessert', 5000, 7000, 90, 'Dessert Enak', '2022-07-19 01:15:46', '2022-07-19 01:15:46'),
-(24, 'DgUujiP2lnh3FcgoVTmSQP7OfKi2VfwXgPH7P3mc.jpg', 'kue kotak', 'dessert', 50000, 60000, 100, 'makanan cokelat manis', '2022-07-19 01:53:01', '2022-07-19 01:53:01'),
-(25, 'Cnq4J1cXawAOcdYTyIuVqeeZYE8FvBJT6kiMQiAG.jpg', 'Outrider\'s Champion Steak!', 'makanan', 5000, 10000, 55, 'Amber\'s specialty. One side is obviously uncooked. The other side gives off a subtle scent of something burnt. Close your eyes and have a big mouthful, just to keep Amber happy if nothing else.', '2022-07-19 19:58:44', '2022-07-19 19:58:44');
+(1, 'LnGcY1ojyVM9pS1O3exE759WpzGgV6RPS1E47I1C.jpg', 'nasi goreng', 'makanan', 10000, 12000, 56, 'nasi, ayam, timun, sambal', '2022-06-28 22:33:05', '2022-07-25 07:15:35'),
+(12, 'RXRtJr15lojvB5djZA8c20Git92A5v5VvVoY5LMo.jpg', 'Jus', 'Minuman', 7000, 10000, 82, 'Jus Apel', '2022-07-12 19:39:34', '2022-07-25 06:42:30'),
+(13, 'Wk2h8tDvwL4YYMVYJEEghJ1P4YxNbaG1Cuw1lYj4.jpg', 'Sate', 'Makanan', 7000, 10000, 96, 'Sate Sapi, Sate Ayam, Sate Kambing', '2022-07-13 19:34:36', '2022-07-25 03:25:39'),
+(16, 'Wr3ojtGMZhsvwPwjV2J2IouLLc0MYyvj3BEO08Bh.jpg', 'Ayam Geprek', 'Makanan', 8000, 12000, 297, 'Pedes, Enak, Nagih', '2022-07-13 23:17:22', '2022-07-21 06:38:21'),
+(17, 'EqV9cbtyVodws0UL9ZmHz4umikLz2Wv7RKjdV1Co.jpg', 'Es Krim', 'Dessert', 5000, 10000, 690, 'Coklat, Vanilla', '2022-07-17 19:28:01', '2022-07-25 03:22:38'),
+(18, 'WRmxysZzU64SM55yGEZZh3ngSKok0gdI7jSbjdR5.jpg', 'Boba', 'Minuman', 7000, 10000, 133, 'boba', '2022-07-18 00:58:57', '2022-07-25 06:42:30'),
+(19, 'tXatFPzPOMNzjZaO5CZm6tUD660UZcrYbuRjBvoo.jpg', 'Ayam Bensu', 'Makanan', 10000, 12000, 99, 'Ayam lezat', '2022-07-18 01:50:01', '2022-07-25 07:08:09'),
+(20, '9AUmbNsLWXQYFsNI21DL5W3FFJTGI7vxq3HKrsAI.jpg', 'Nasi Goreng', 'makanan', 5000, 10000, 77, 'Nasi Goreng Enak', '2022-07-18 19:41:08', '2022-07-21 08:05:28'),
+(21, 'qdeenKFRrQHfivv37cPFtTBYkPkJOdrAe4SDXS46.jpg', 'Cokelat', 'dessert', 5000, 7000, 39, 'Dessert Box Chocolate', '2022-07-19 01:10:20', '2022-07-21 07:19:53'),
+(22, 'QIsMhb2ShmmIH4ueJjUjmHQvvcOpqraMjozEsVPZ.jpg', 'pop sugar', 'dessert', 7000, 12000, 79, 'Dessert Nikmat, Mulai dari Stroberi Hingga Krim Karamel', '2022-07-19 01:12:42', '2022-07-21 08:02:36'),
+(23, 'ptk5VABXzj0hurtIhiQqig9FeDX597mOPPvmBX7P.jpg', 'Es Teler Dessert Box', 'dessert', 5000, 7000, 86, 'Dessert Enak', '2022-07-19 01:15:46', '2022-07-21 06:38:22'),
+(24, 'DgUujiP2lnh3FcgoVTmSQP7OfKi2VfwXgPH7P3mc.jpg', 'kue kotak', 'dessert', 50000, 60000, 95, 'makanan cokelat manis', '2022-07-19 01:53:01', '2022-07-21 08:55:06'),
+(25, 'Cnq4J1cXawAOcdYTyIuVqeeZYE8FvBJT6kiMQiAG.jpg', 'Outrider\'s Champion Steak!', 'makanan', 5000, 10000, 49, 'Amber\'s specialty. One side is obviously uncooked.', '2022-07-19 19:58:44', '2022-07-24 23:48:41'),
+(26, 'rA4Elow11pJ2BRqacsq0LNI8s8TErR0fJk9dWNfJ.jpg', 'Laksa', 'makanan', 7000, 10000, 43, 'Laksa Singapura', '2022-07-19 23:27:52', '2022-07-25 03:22:38'),
+(27, 'ptsWPoSg9tMrwjLYXIsba1ZJjqraA14nkGVlf7JI.jpg', 'Soto Lamongan', 'makanan', 10000, 25000, 55, 'Soto Lamongan', '2022-07-21 21:25:56', '2022-07-21 21:25:56'),
+(28, 'HebMcg0OeNqQ44H0rEDbbzYX5hG9u1XoNOwWQcj3.jpg', 'Tricolor Dango', 'dessert', 5000, 7000, 99, 'A soft, glutinous snack.', '2022-07-24 20:46:30', '2022-07-25 06:42:30');
 
 -- --------------------------------------------------------
 
@@ -199,11 +214,31 @@ CREATE TABLE `menu_dipesan` (
 --
 
 INSERT INTO `menu_dipesan` (`id_pesanan`, `id_menu`, `jumlah`, `harga_peritem`, `created_at`, `updated_at`) VALUES
-(101, 1, 2, 24000, '2022-07-15 03:27:46', '2022-07-15 03:27:46'),
-(102, 12, 1, 10000, '2022-07-15 03:29:56', '2022-07-15 03:29:56'),
-(103, 13, 2, 20000, '2022-07-15 03:31:11', '2022-07-15 03:31:11'),
-(104, 16, 1, 12000, NULL, NULL),
-(1, 1, 2, 24000, '2022-07-20 04:18:51', '2022-07-20 04:18:51');
+(156, 1, 7, 84000, '2022-07-21 08:55:05', '2022-07-21 08:55:05'),
+(156, 12, 5, 50000, '2022-07-21 08:55:06', '2022-07-21 08:55:06'),
+(156, 24, 5, 300000, '2022-07-21 08:55:06', '2022-07-21 08:55:06'),
+(1, 25, 1, 10000, NULL, NULL),
+(157, 1, 3, 36000, '2022-07-22 03:22:54', '2022-07-22 03:22:54'),
+(157, 12, 1, 10000, '2022-07-22 03:22:54', '2022-07-22 03:22:54'),
+(158, 1, 3, 36000, '2022-07-22 03:24:14', '2022-07-22 03:24:14'),
+(158, 12, 1, 10000, '2022-07-22 03:24:14', '2022-07-22 03:24:14'),
+(159, 1, 3, 36000, '2022-07-22 03:29:40', '2022-07-22 03:29:40'),
+(159, 12, 1, 10000, '2022-07-22 03:29:40', '2022-07-22 03:29:40'),
+(2, 1, 1, 12000, NULL, NULL),
+(160, 1, 1, 12000, '2022-07-25 02:58:15', '2022-07-25 02:58:15'),
+(160, 18, 1, 10000, '2022-07-25 02:58:15', '2022-07-25 02:58:15'),
+(161, 13, 3, 30000, '2022-07-25 03:20:55', '2022-07-25 03:20:55'),
+(161, 18, 2, 20000, '2022-07-25 03:20:55', '2022-07-25 03:20:55'),
+(162, 26, 1, 10000, '2022-07-25 03:22:38', '2022-07-25 03:22:38'),
+(162, 17, 1, 10000, '2022-07-25 03:22:38', '2022-07-25 03:22:38'),
+(163, 13, 1, 10000, '2022-07-25 03:25:38', '2022-07-25 03:25:38'),
+(164, 1, 1, 12000, '2022-07-25 06:31:02', '2022-07-25 06:31:02'),
+(165, 1, 1, 12000, '2022-07-25 06:41:53', '2022-07-25 06:41:53'),
+(166, 28, 1, 7000, '2022-07-25 06:42:30', '2022-07-25 06:42:30'),
+(166, 12, 1, 10000, '2022-07-25 06:42:30', '2022-07-25 06:42:30'),
+(166, 18, 1, 10000, '2022-07-25 06:42:30', '2022-07-25 06:42:30'),
+(167, 19, 1, 12000, '2022-07-25 07:08:09', '2022-07-25 07:08:09'),
+(168, 1, 6, 72000, '2022-07-25 07:15:35', '2022-07-25 07:15:35');
 
 -- --------------------------------------------------------
 
@@ -236,7 +271,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (21, '2022_06_27_070816_create_mejas_table', 8),
 (22, '2022_07_06_062546_create_feedback_table', 9),
 (23, '2022_06_29_010054_create_menu__dipesans_table', 10),
-(25, '2022_07_02_031207_create_riwayat_transaksis_table', 11);
+(25, '2022_07_02_031207_create_riwayat_transaksis_table', 11),
+(27, '2022_07_21_025211_create_diskons_table', 12);
 
 -- --------------------------------------------------------
 
@@ -289,11 +325,21 @@ CREATE TABLE `pesanan` (
 --
 
 INSERT INTO `pesanan` (`id_pesanan`, `no_meja`, `waktu_pesan`, `status`, `total_harga`, `created_at`, `updated_at`) VALUES
-(1, 1, '2022-07-19 08:07:53', '', 0, NULL, NULL),
-(101, 1, '2022-07-06 04:35:49', 'selesai', 40000, '2022-07-06 09:35:49', '2022-07-18 19:32:37'),
-(102, 2, '2022-07-06 04:42:15', 'selesai', 40000, '2022-07-06 09:42:15', '2022-07-18 19:27:56'),
-(103, 2, '2022-07-06 04:42:55', 'selesai', 40000, '2022-07-06 09:42:55', '2022-07-19 00:28:28'),
-(104, 2, '2022-07-14 02:18:12', 'selesai', 0, '2022-07-14 07:18:13', '2022-07-19 02:17:48');
+(1, 2, '2022-07-21 11:13:15', 'selesai', 10000, NULL, NULL),
+(2, 1, '2022-07-22 10:52:04', 'selesai', 12000, NULL, '2022-07-25 02:11:58'),
+(156, 2, '2022-07-21 03:55:04', 'di pesan', 434000, '2022-07-21 08:55:04', '2022-07-21 02:11:54'),
+(157, 2, '2022-07-22 10:22:53', 'di pesan', 46000, '2022-07-22 03:22:53', '2022-07-22 03:22:54'),
+(158, 2, '2022-07-22 10:24:14', 'di pesan', 46000, '2022-07-22 03:24:14', '2022-07-22 03:24:14'),
+(159, 2, '2022-07-22 10:29:39', 'di pesan', 46000, '2022-07-22 03:29:40', '2022-07-22 03:29:40'),
+(160, 2, '2022-07-25 09:58:15', 'di pesan', 22000, '2022-07-25 02:58:15', '2022-07-25 02:58:15'),
+(161, 2, '2022-07-25 10:20:55', 'di pesan', 50000, '2022-07-25 03:20:55', '2022-07-25 03:20:55'),
+(162, 2, '2022-07-25 10:22:38', 'di pesan', 20000, '2022-07-25 03:22:38', '2022-07-25 03:22:38'),
+(163, 2, '2022-07-25 10:25:38', 'di pesan', 10000, '2022-07-25 03:25:38', '2022-07-25 03:25:39'),
+(164, 2, '2022-07-25 13:31:01', 'di pesan', 12000, '2022-07-25 06:31:01', '2022-07-25 06:31:02'),
+(165, 2, '2022-07-25 13:41:53', 'di pesan', 12000, '2022-07-25 06:41:53', '2022-07-25 06:41:53'),
+(166, 2, '2022-07-25 13:42:30', 'di pesan', 27000, '2022-07-25 06:42:30', '2022-07-25 06:42:30'),
+(167, 2, '2022-07-25 14:08:09', 'di pesan', 12000, '2022-07-25 07:08:09', '2022-07-25 07:08:09'),
+(168, 2, '2022-07-25 14:15:35', 'di pesan', 72000, '2022-07-25 07:15:35', '2022-07-25 07:15:35');
 
 -- --------------------------------------------------------
 
@@ -316,10 +362,29 @@ CREATE TABLE `pesanan_selesai` (
 
 CREATE TABLE `riwayat_transaksi` (
   `id_pesanan` bigint(20) UNSIGNED NOT NULL,
-  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status_transaksi` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `riwayat_transaksi`
+--
+
+INSERT INTO `riwayat_transaksi` (`id_pesanan`, `status_transaksi`, `created_at`, `updated_at`) VALUES
+(156, 'belum_dibayar', '2022-07-21 08:55:06', '2022-07-21 08:55:06'),
+(157, 'belum_dibayar', '2022-07-22 03:22:54', '2022-07-22 03:22:54'),
+(158, 'belum_dibayar', '2022-07-22 03:24:14', '2022-07-22 03:24:14'),
+(159, 'belum_dibayar', '2022-07-22 03:29:40', '2022-07-22 03:29:40'),
+(160, 'belum_dibayar', '2022-07-25 02:58:15', '2022-07-25 02:58:15'),
+(161, 'belum dibayar', '2022-07-25 03:20:55', '2022-07-25 03:20:55'),
+(162, 'belum dibayar', '2022-07-25 03:22:38', '2022-07-25 03:22:38'),
+(163, 'belum dibayar', '2022-07-25 03:25:39', '2022-07-25 03:25:39'),
+(164, 'belum dibayar', '2022-07-25 06:31:02', '2022-07-25 06:31:02'),
+(165, 'belum dibayar', '2022-07-25 06:41:53', '2022-07-25 06:41:53'),
+(166, 'belum dibayar', '2022-07-25 06:42:31', '2022-07-25 06:42:31'),
+(167, 'belum dibayar', '2022-07-25 07:08:09', '2022-07-25 07:08:09'),
+(168, 'belum dibayar', '2022-07-25 07:15:35', '2022-07-25 07:15:35');
 
 -- --------------------------------------------------------
 
@@ -355,6 +420,13 @@ CREATE TABLE `users` (
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indeks untuk tabel `diskon`
+--
+ALTER TABLE `diskon`
+  ADD PRIMARY KEY (`id_diskon`),
+  ADD KEY `diskon_id_menu_foreign` (`id_menu`);
 
 --
 -- Indeks untuk tabel `failed_jobs`
@@ -461,6 +533,12 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT untuk tabel `diskon`
+--
+ALTER TABLE `diskon`
+  MODIFY `id_diskon` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT untuk tabel `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
@@ -470,25 +548,25 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT untuk tabel `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `id_feedback` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id_feedback` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT untuk tabel `laporan_masuk`
 --
 ALTER TABLE `laporan_masuk`
-  MODIFY `id_laporan_masuk` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_laporan_masuk` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `id_menu` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id_menu` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT untuk tabel `personal_access_tokens`
@@ -500,7 +578,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT untuk tabel `pesanan`
 --
 ALTER TABLE `pesanan`
-  MODIFY `id_pesanan` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
+  MODIFY `id_pesanan` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=169;
 
 --
 -- AUTO_INCREMENT untuk tabel `pesanan_selesai`
@@ -523,6 +601,12 @@ ALTER TABLE `users`
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
+
+--
+-- Ketidakleluasaan untuk tabel `diskon`
+--
+ALTER TABLE `diskon`
+  ADD CONSTRAINT `diskon_id_menu_foreign` FOREIGN KEY (`id_menu`) REFERENCES `menu` (`id_menu`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `feedback`
