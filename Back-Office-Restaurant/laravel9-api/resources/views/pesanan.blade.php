@@ -58,11 +58,7 @@
                             <thead style="background-color: black">
                                 <tr>
                                     <th style="color: white">No</th>
-                                    <th style="color: white">Nama Menu</th>
-                                    <th style="color: white">Tipe Menu</th>
-                                    <th style="color: white">
-                                        Jumlah
-                                    </th>
+                                    <th style="color: white">ID Pesanan</th>
                                     <th style="color: white">Total Harga</th>
                                     <th style="color: white">
                                         Status Pesanan
@@ -105,16 +101,8 @@
                     name: "DT_RowIndex",
                 },
                 {
-                    data: "nama_menu",
-                    name: "nama_menu",
-                },
-                {
-                    data: "tipe_produk",
-                    name: "tipe_produk",
-                },
-                {
-                    data: "jumlah",
-                    name: "jumlah",
+                    data: "id_pesanan",
+                    name: "id_pesanan",
                 },
                 {
                     data: "total_harga",

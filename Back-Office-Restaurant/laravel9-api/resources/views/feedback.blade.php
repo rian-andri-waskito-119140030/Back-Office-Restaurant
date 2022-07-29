@@ -62,6 +62,7 @@
                             <thead style="background-color: black;">
                                 <tr>
                                     <th style="color: white">No</th>
+                                    <th style="color: white">ID Pesanan</th>
                                     <th style="color: white">Nama Menu</th>
                                     <th style="color: white">Feedback</th>
                                     <!-- <th width="20%" style="color: white">Action</th> -->
@@ -93,6 +94,10 @@
             columns: [{
                     data: 'DT_RowIndex',
                     name: 'DT_RowIndex'
+                },
+                {
+                    data: 'id_pesanan',
+                    name: 'id_pesanan'
                 },
                 {
                     data: 'nama_menu',

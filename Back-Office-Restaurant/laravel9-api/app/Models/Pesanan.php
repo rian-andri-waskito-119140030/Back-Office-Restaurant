@@ -16,4 +16,10 @@ class Pesanan extends Model
         'status',
         'total_harga',
     ];
+
+    public function menu_dipesan()
+    {
+        return $this->hasMany(Menu_dipesan::class, 'id_pesanan')->with('menu');
+    }
+
 }

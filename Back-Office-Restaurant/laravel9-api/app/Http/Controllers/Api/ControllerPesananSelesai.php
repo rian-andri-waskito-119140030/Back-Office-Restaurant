@@ -29,6 +29,8 @@ class ControllerPesananSelesai extends Controller
                 ->join('menu', 'menu_dipesan.id_menu', '=', 'menu.id_menu')
                 ->select('menu_dipesan.jumlah', 'menu.nama_menu', 'menu.tipe_produk', 'pesanan.status', 'pesanan.waktu_pesan', 'pesanan.id_pesanan', 'pesanan.total_harga')
                 ->where('pesanan.status', '=', 'selesai')
+                ->orderBy('pesanan.waktu_pesan')
+                ->groupBy('pesanan.id_pesanan')
                 ->get();
             return DataTables::of($pesananselesai)
                 ->addColumn('total_harga', function ($row) {
