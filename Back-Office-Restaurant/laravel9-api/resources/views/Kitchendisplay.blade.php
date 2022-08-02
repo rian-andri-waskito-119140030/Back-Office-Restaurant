@@ -41,20 +41,25 @@
         <div class="row mx-auto pesanan">
 
 
-
-
           <!-- <div class="col-md-4 mb-3 mt-3">
             <div class="card border-0">
               <div class="card-header" style="border-bottom: 5px solid black ;">
-                <h5 class="my-2">Pesanan </h5>
+                <h5 class="my-2"></h5>
               </div>
               <div class="card-body">
 
-                <button type="button" value="" class="edit_pesanan btn btn-primary btn-sm">add</button>
+
+
+
+
+
+                <button type="button" value="" class="edit_pesanan btn btn-primary btn-sm"></button>
               </div>
             </div>
 
-          </div> -->
+        </div> -->
+
+
 
         </div>
       </div>
@@ -118,30 +123,57 @@
         url: '/pesanan-datang',
         dataType: 'json',
         success: function(response) {
-          //console.log(response.pesanan);
-          for (var i = 0; i < response.pesanan.length; i++) {
-
-            if (response.pesanan[i].status == 'di masak' || response.pesanan[i].status == 'di pesan') {
-
-              var html = '<div class="col-md-4 mb-3 mt-3">' +
-                '<div class="card border-0">' +
-                '<div class="card-header" style="border-bottom: 5px solid black ;">' +
-                '<h5 class="my-2">Pesanan ' + [i + 1] + '</h5>' +
-                '</div>' +
-                '<div class="card-body">' +
-
-                '<p>Nama Menu = ' + response.pesanan[i].nama_menu + '</p>' +
-                '<p>Jumlah = ' + response.pesanan[i].jumlah + '</p>' +
-
-                '<button type="button" value="' + response.pesanan[i].id_pesanan + '" class="edit_pesanan btn btn-primary btn-m">' + response.pesanan[i].status + '</button>' +
-                '</div>' +
-                '</div>' +
-                '</div>';
-              $('.pesanan').append(html);
+          //response.pesanan.array
+          //console.log(response);
 
 
-            }
-          }
+          var tes = '';
+          response.pesanan.forEach(function(item) {
+            //console.log(item);
+            tes += '<div class="col-md-4 mb-3 mt-3">';
+            tes += '<div class="card border-0">';
+            tes += '<div class="card-header" style="border-bottom: 5px solid black ;">';
+            tes += '<h5 class="my-2">' + item.waktu_pesan + '</h5>';
+            tes += '</div>';
+            tes += '<div class="card-body menu">';
+            tes += '<p class="card-text">Nama Menu = ' + item.id_pesanan + '</p>';
+
+            item.menu_dipesan.forEach(function(pesanan) {
+              tes += '<p class="card-text">Nama Menu = ' + pesanan.menu.nama_menu + '</p>';
+              tes += '<p class="card-text">Jumlah = ' + pesanan.jumlah + '</p>';
+
+            });
+
+            tes += '<button type="button" value="' + item.id_pesanan + '" class="edit_pesanan btn btn-primary btn-sm">' + item.status + '</button>';
+            tes += '</div>';
+            tes += '</div>';
+            tes += '</div>';
+
+
+          });
+          $('.pesanan').append(tes);
+
+
+
+          // var html = '<div class="col-md-4 mb-3 mt-3">' +
+          //   '<div class="card border-0">' +
+          //   '<div class="card-header" style="border-bottom: 5px solid black ;">' +
+          //   '<h5 class="my-2">Pesanan </h5>' +
+          //   '</div>' +
+          //   '<div class="card-body">' +
+          //   '<p>ID Pesanan </p>' +
+          //   '<p>Nama Menu </p>' +
+          //   '<p>Jumlah </p>' +
+
+          //   '<button type="button" value="" class="edit_pesanan btn btn-primary btn-m"></button>' +
+          //   '</div>' +
+          //   '</div>' +
+          //   '</div>';
+          // $('.pesanan').append(html);
+
+
+
+
         }
       })
     }
@@ -185,9 +217,9 @@
             console.log(response.message);
           } else {
             $('#addmodel').modal('hide');
-
+            location.reload();
           }
-          getData();
+
         }
       })
     });

@@ -22,6 +22,7 @@ Route::apiResource('/tiketpesanan', ControllerTiketPesanan::class);
 Route::apiResource('/pesananselesai', ControllerPesananSelesai::class);
 Route::get('/pesananselesai/show',[ControllerPesananSelesai::class, 'show']);
 Route::apiResource('/pesanan', ControllerPesanan::class);
+Route::get('/pesanan/index',[ControllerPesanan::class, 'index']);
 Route::get('/pesanan/show/{id_pesanan}',[ControllerPesanan::class, 'show']);
 Route::post('pesanan/edit/{id_pesanan}', [ControllerPesanan::class, 'edit']);
 Route::apiResource('/laporanmasuk', ControllerLaporanMasuk::class);
@@ -30,6 +31,7 @@ Route::get('/laporanmasuk/show/{id_laporan_masuk}', [ControllerLaporanMasuk::cla
 Route::post('/laporanmasuk/edit/{id_laporan_masuk}', [ControllerLaporanMasuk::class, 'edit']);
 Route::get('/totalharga/showharga', [ControllerTotalHarga::class, 'showharga']);
 Route::apiResource('/totalharga', ControllerTotalHarga::class);
+
 
 /*
 |--------------------------------------------------------------------------

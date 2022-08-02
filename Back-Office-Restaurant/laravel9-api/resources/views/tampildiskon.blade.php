@@ -6,7 +6,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css" />
-    <link rel="icon" href="https://w7.pngwing.com/pngs/518/893/png-transparent-computer-icons-purchase-order-business-clipboard-business-angle-text-service.png" type="image/x-icon" />
+    <link rel="icon" href="https://img2.pngdownload.id/20180920/xvk/kisspng-discounts-and-allowances-logo-brand-image-symbol-muhamad-shobirin-google-5ba4015e28ecc1.4160375515374749101676.jpg" type="image/x-icon" />
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css"> -->
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" /> -->
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/css/tempusdominus-bootstrap-4.min.css" /> -->
