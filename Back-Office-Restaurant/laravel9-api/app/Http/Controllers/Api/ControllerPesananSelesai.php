@@ -22,23 +22,26 @@ class ControllerPesananSelesai extends Controller
     {
         //get posts
         //get posts
+        // $pesananselesai = Pesanan::select('*')
+        //     ->where('status', '=', 'selesai')
+        //     ->orderBy('waktu_pesan')
+        //     ->groupBy('id_pesanan')
+        //     ->get();
+        // dd($pesananselesai);
         $pesananselesai = Pesanan::oldest();
         if ($request->ajax()) {
-            $pesananselesai = DB::table('menu_dipesan')
-                ->join('pesanan', 'menu_dipesan.id_pesanan', '=', 'pesanan.id_pesanan')
-                ->join('menu', 'menu_dipesan.id_menu', '=', 'menu.id_menu')
-                ->select('menu_dipesan.jumlah', 'menu.nama_menu', 'menu.tipe_produk', 'pesanan.status', 'pesanan.waktu_pesan', 'pesanan.id_pesanan', 'pesanan.total_harga')
-                ->where('pesanan.status', '=', 'selesai')
-                ->orderBy('pesanan.waktu_pesan')
-                ->groupBy('pesanan.id_pesanan')
+            $pesananselesai = Pesanan::with(['menu_dipesan', 'meja'])
+                ->whereIn('status', ['selesai'])
+                ->orderBy('waktu_pesan')
+                ->groupBy('id_pesanan')
                 ->get();
             return DataTables::of($pesananselesai)
                 ->addColumn('total_harga', function ($row) {
                     $harga = 'Rp. ' . number_format($row->total_harga, 0, ',', '.');
                     return $harga;
                 })
-
-                ->rawColumns(['total_harga'])
+                ->addColumn('action', 'detail')
+                ->rawColumns(['total_harga', 'action'])
                 ->addIndexColumn()
                 ->make(true);
         }
@@ -56,6 +59,16 @@ class ControllerPesananSelesai extends Controller
      * @return void
      */
 
+    public function detail(Pesanan $pesananselesai)
+    {
+        // $pesananselesai = Pesanan::with(['menu_dipesan', 'meja'])
+        //     ->whereIn('status', ['selesai'])
+        //     ->orderBy('waktu_pesan')
+        //     ->get();
+        // dd($pesananselesai);
+        return view('detail_pesanan', compact('pesananselesai'));
+    }
+
     public function show(Request $request)
     {
         $joinpesanan = DB::table('pesanan')
@@ -64,5 +77,20 @@ class ControllerPesananSelesai extends Controller
             ->get();
 
         return new PesananSelesaiResource(true, 'List Data Pesanan Selesai', $joinpesanan);
+    }
+
+    public function tampil($id_pesanan)
+    {
+        $pesananselesai = Pesanan::find($id_pesanan);
+        $pesananselesai = Pesanan::with(['menu_dipesan', 'meja'])
+            ->whereIn('status', ['selesai'])
+            ->orderBy('waktu_pesan')
+            ->groupBy('id_pesanan')
+            ->get();
+
+        return response()->json([
+            'status' => 'success',
+            'pesananselesai' => $pesananselesai,
+        ]);
     }
 }

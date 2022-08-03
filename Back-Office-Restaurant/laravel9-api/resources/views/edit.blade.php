@@ -12,7 +12,7 @@
   <title>Ubah Menu</title>
 </head>
 
-<body style="background-image: url(../images/resto.png);">
+<body style="background-image: url('{{asset('images/resto.png')}}'); background-size:cover;">
 
   <div class="sidebar">
     <h2>BACK OFFICE</h2>
@@ -36,49 +36,51 @@
     </div>
     <!-- header -->
 
-    <div class="body-content py-5 bg-white">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-4 mx-auto">
-            <div class="card">
-              <div class="card-header" style="background-color: #6ECED9">
-                <h5>Edit Menu</h5>
-              </div>
-              <div class="card-body">
-                <form action="{{ route('menu.update', $menu->id_menu) }}" method="POST" enctype="multipart/form-data">
-                  @csrf
-                  @method('PUT')
-                  <div class="form-group mx-auto">
-                    <div class="mb-3">
-                      <label for="">Gambar</label>
-                      <input type="file" class="form-control" name="gambar" value="{{ $menu->gambar }}">
-                    </div>
-                    <div class="mb-3">
-                      <label for="">Nama Menu</label>
-                      <input type="text" class="form-control" name="nama_menu" value="{{ $menu->nama_menu }}">
-                    </div>
-                    <div class="mb-3">
-                      <label for="">Tipe Produk</label>
-                      <input type="text" class="form-control" name="tipe_produk" value="{{ $menu->tipe_produk }}">
-                    </div>
-                    <div class="mb-3">
-                      <label for="">Harga Modal</label>
-                      <input type="text" class="form-control" name="harga_modal" value="{{ $menu->harga_modal }}">
-                    </div>
-                    <div class="mb-3">
-                      <label for="">Harga Jual</label>
-                      <input type="text" class="form-control" name="harga_jual" value="{{ $menu->harga_jual }}">
-                    </div>
-                    <div class="mb-3">
-                      <label for="">Stok</label>
-                      <input type="text" class="form-control" name="stok" value="{{ $menu->stok }}">
-                    </div>
-                    <div class="mb-3">
-                      <label for="">Deskripsi</label>
-                      <input type="textarea" class="form-control" name="deskripsi" value="{{ $menu->deskripsi }}">
-                    </div>
+    <!-- <div class="body-content py-5 bg-white"> -->
+    <div class="container">
+      <div class="box">
+        <div class="col-md-4 mx-auto">
+          <div class="card">
+            <div class="card-header" style="background-color: #6ECED9">
+              <h5>Edit Menu</h5>
+            </div>
+            <div class="card-body">
+              <form action="{{ route('menu.update', $menu->id_menu) }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                @method('PUT')
+                <div class="form-group mx-auto">
+                  <div class="mb-3">
+                    <label for="">Gambar</label>
+                    <img src="{{asset('storage/menu/' .$menu->gambar)}}" width="100px" alt="{{$menu->nama_menu}}">
 
-                    <button width="20%" type="submit" class="btn-success mx-auto" style="
+                    <input type="file" class="form-control" name="gambar" value="{{ $menu->gambar }}">
+                  </div>
+                  <div class="mb-3">
+                    <label for="">Nama Menu</label>
+                    <input type="text" class="form-control" name="nama_menu" value="{{ $menu->nama_menu }}" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="">Tipe Produk</label>
+                    <input type="text" class="form-control" name="tipe_produk" value="{{ $menu->tipe_produk }}" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="">Harga Modal</label>
+                    <input type="text" class="form-control" name="harga_modal" value="{{ $menu->harga_modal }}" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="">Harga Jual</label>
+                    <input type="text" class="form-control" name="harga_jual" value="{{ $menu->harga_jual }}" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="">Stok</label>
+                    <input type="text" class="form-control" name="stok" value="{{ $menu->stok }}" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="">Deskripsi</label>
+                    <input type="textarea" class="form-control" name="deskripsi" value="{{ $menu->deskripsi }}" required>
+                  </div>
+
+                  <button width="20%" type="submit" class="btn-success mx-auto" style="
                     background-color: #6ECED9;
                     color: black;
                     border: 0;
@@ -87,17 +89,17 @@
                     display: flex;
                     justify-content: center;
                   ">
-                      <h6>Ubah Menu</h6>
-                    </button>
-                  </div>
-                </form>
-              </div>
+                    <h6>Ubah Menu</h6>
+                  </button>
+                </div>
+              </form>
             </div>
-
           </div>
+
         </div>
       </div>
     </div>
+    <!-- </div> -->
 
 
 </body>

@@ -13,4 +13,9 @@ class Meja extends Model
     protected $fillable = [
         'nama_meja',
     ];
+
+    public function pesanan()
+    {
+        return $this->hasMany(Pesanan::class, 'no_meja')->with('menu_dipesan');
+    }
 }

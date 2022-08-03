@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\Pesanan;
+use App\Models\Meja;
 use App\Models\Menu_dipesan;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -28,11 +29,11 @@ class ControllerPesanan extends Controller
         //     ->orderBy('pesanan.waktu_pesan')
         //     ->get();
 
-        $pesanan = Pesanan::with(['menu_dipesan'])
-        ->whereIn('status', ['di pesan', 'di masak'])
-        ->orderBy('waktu_pesan')
-        ->get();
-
+        $pesanan = Pesanan::with(['menu_dipesan', 'meja'])
+            ->whereIn('status', ['di pesan', 'di masak'])
+            ->orderBy('waktu_pesan')
+            ->get();
+        //dd($pesanan);
 
         // if (count($pesanan) > 0) {
         //     $pesanan = $pesanan->groupBy('id_pesanan');

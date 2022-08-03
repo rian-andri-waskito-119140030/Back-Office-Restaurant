@@ -11,8 +11,6 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\URL;
 use DataTables;
-use App\Http\Controllers\Api\toString;
-use App\Http\Controllers\Api\toLowerCase;
 
 class ControllerMenu extends Controller
 {
@@ -127,13 +125,25 @@ class ControllerMenu extends Controller
     {
         //upload image
         if ($request->hasFile('gambar')) {
-            $gambar = $request->file('gambar');
-            $gambar->storeAs('public/menu', $gambar->hashName());
-            $gambar = $gambar->hashName();
-            //delete old image
-            Storage::delete('public/menu/' . $request->gambar);
+            //$gambar = $request->file('gambar');
+            // $gambar->storeAs('public/menu', $gambar->hashName());
+            // $gambar = $gambar->hashName();
+
+            // //delete old image
+            // Storage::delete('public/menu/' . $request->gambar);
             $menu = Menu::find($id_menu);
-            $menu->gambar = $gambar->hashName();
+            // $menu = $request->file('gambar');
+            // $menu->storeAs('public/menu', $menu->hashName());
+            //$menu->gambar = $menu->hashName();
+            $destinationPath = 'public/menu' . $menu->gambar;
+            if (Storage::exists($destinationPath)) {
+                Storage::delete($destinationPath);
+            }
+            $gambar = $request->file('gambar');
+            $extension = $gambar->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $gambar->storeAs('public/menu', $filename);
+            $menu->gambar = $filename;
             $menu->nama_menu = $request->nama_menu;
             $menu->tipe_produk = $request->tipe_produk;
             $menu->harga_modal = $request->harga_modal;

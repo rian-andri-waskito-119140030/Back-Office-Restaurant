@@ -64,9 +64,9 @@
                                         Status Pesanan
                                     </th>
 
-                                    <!-- <th width="20%" style="color: white">
+                                    <th width="8%" style="color: white">
                                         Action
-                                    </th> -->
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody></tbody>
@@ -82,6 +82,44 @@
         <!-- close body content -->
     </div>
     <!-- close content -->
+    <div class="modal fade" id="addmodel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Detail Pesanan</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" name="id_pesanan" id="id_pesanan">
+                    <div class="form-group">
+                        <label for="name" class="col-sm-2 control-label">Status</label>
+                        <div class="col-sm-12">
+                            <select class="form-control" id="status" class="status" value="status" placeholder="pilih status">
+
+                                <option>di masak</option>
+                                <option>selesai</option>
+                                <option>cancel</option>
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="name" class="col-sm-2 control-label">Status</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" id="nama_menu" class="nama_menu" value="nama_menu" placeholder="nama_menu">
+                        </div>
+                    </div>
+                    <div class="col-sm-offset-2 col-sm-10 mt-3">
+                        <button type="submit" class="btn btn-primary update-pesanan" id="saveBtn" value="create">Save changes
+                        </button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 <script type="text/javascript">
     $(function() {
@@ -103,6 +141,7 @@
                 {
                     data: "id_pesanan",
                     name: "id_pesanan",
+                    searchable: true,
                 },
                 {
                     data: "total_harga",
@@ -113,12 +152,12 @@
                     name: "status",
                 },
 
-                // {
-                //     data: "action",
-                //     name: "action",
-                //     orderable: false,
-                //     searchable: false,
-                // },
+                {
+                    data: "action",
+                    name: "action",
+                    orderable: false,
+                    searchable: false,
+                },
             ],
         });
         $("body").on("click", ".delete", function() {
@@ -141,6 +180,25 @@
                     },
                 });
             }
+        });
+        $(document).on('click', '.detail_pesanan', function(e) {
+            e.preventDefault();
+            var id_pesanan = $(this).val();
+            $('#addmodel').modal('show');
+            $.ajax({
+                type: 'GET',
+                url: '/tampil-pesanan-selesai/' + id_pesanan,
+                dataType: 'json',
+                success: function(response) {
+                    console.log(response);
+                    if (response.status == 404) {
+                        console.log(response.message);
+                    } else {
+                        $('#nama_menu').val(response.pesananselesai.nama_menu);
+                        $('#id_pesanan').val(id_pesanan);
+                    }
+                }
+            })
         });
     });
 </script>

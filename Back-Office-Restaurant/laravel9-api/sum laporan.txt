@@ -1,0 +1,1 @@
+SELECT DATE(waktu_pesan), SUM(total_harga)FROM pesanan GROUP BY DATE(waktu_pesan);

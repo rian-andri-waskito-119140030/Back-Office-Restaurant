@@ -129,21 +129,26 @@
 
           var tes = '';
           response.pesanan.forEach(function(item) {
-            //console.log(item);
+            console.log(item);
             tes += '<div class="col-md-4 mb-3 mt-3">';
             tes += '<div class="card border-0">';
             tes += '<div class="card-header" style="border-bottom: 5px solid black ;">';
-            tes += '<h5 class="my-2">' + item.waktu_pesan + '</h5>';
+            tes += `<h5 class="my-2"> ${item.meja.nama_meja}</h5>`;
             tes += '</div>';
             tes += '<div class="card-body menu">';
-            tes += '<p class="card-text">Nama Menu = ' + item.id_pesanan + '</p>';
+            tes += '<p class="card-text">=====================</p>'
+            tes += `<p class="card-text">ID Pesanan = ${item.id_pesanan}</p>`;
+            tes += `<p class="card-text">Waktu Pesanan = ${item.waktu_pesan}</p>`;
+            tes += `<p class="card-text">Daftar Pesanan: </p>`;
+            item.menu_dipesan.forEach(function(pesanan, index) {
 
-            item.menu_dipesan.forEach(function(pesanan) {
-              tes += '<p class="card-text">Nama Menu = ' + pesanan.menu.nama_menu + '</p>';
-              tes += '<p class="card-text">Jumlah = ' + pesanan.jumlah + '</p>';
+              tes += `<p class="card-text">${index+1}. ${pesanan.menu.nama_menu} ${pesanan.jumlah}</p>`;
+
+
+
 
             });
-
+            tes += '<p class="card-text">=====================</p>'
             tes += '<button type="button" value="' + item.id_pesanan + '" class="edit_pesanan btn btn-primary btn-sm">' + item.status + '</button>';
             tes += '</div>';
             tes += '</div>';
