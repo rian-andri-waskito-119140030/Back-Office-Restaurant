@@ -25,7 +25,6 @@
                         Katalog
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="Katalog.html">Promo & Discount</a></li>
                         <li><a class="dropdown-item" href="Katalog Foods.html">Foods</a></li>
                         <li><a class="dropdown-item" href="Katalog Drinks.html">Drinks</a></li>
                         <li><a class="dropdown-item" href="Katalog Dessert.html">Dessert</a></li>
@@ -40,7 +39,7 @@
                         <a class="nav-link" href="Fasilitas.html" tabindex="-1" aria-disabled="true">Fasilitas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="Feedback.html" tabindex="-1" aria-disabled="true">Feedback</a>
+                        <a class="nav-link" href="Sebelum Feedback.html" tabindex="-1" aria-disabled="true">Feedback</a>
                     </li>
                     </ul>
                 </div>
@@ -48,17 +47,25 @@
             </nav>
         </header>
     <div class="bg">   
-    <form>
-        <div class="mb-4">
-            <label for="example input text" class="form-label">Berikan Penilaian Anda : </label>
-            <input type="text" class="form-control" id="exampleInputText" aria-describedby="TextHelp">
-        </div>
-    </form> 
-        <div class="col-11">
-            <a href="feedback konfir.html"><button class="btn btn-success float-end px-5">Submit</button></a>
+<div class="body-content">
+    <div class="container">
+        <div class="box">
+            <div class="bg">
+                <form action="{{ route('feedback.store') }}" method="POST" enctype="multipart/form-data">
+                    <div class=" tombol mb-4">
+                        <label for="isi_feedback" class="form-label">Berikan Penilaian Anda : </label> <br>
+                        <textarea name="isi_feedback" id="isi_feedback" cols="100" rows="10"></textarea>
+                        <div class="tomb"><button class="btn btn-success" style="float: end;">Submit</button></div>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+</script>
+<script src="https://code.iconify.design/2/2.1.0/iconify.min.js"></script>
+
 </html>
