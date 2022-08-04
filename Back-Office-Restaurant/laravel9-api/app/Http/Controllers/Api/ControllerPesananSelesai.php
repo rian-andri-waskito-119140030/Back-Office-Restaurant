@@ -22,8 +22,8 @@ class ControllerPesananSelesai extends Controller
     {
         //get posts
         //get posts
-        // $pesananselesai = Pesanan::select('*')
-        //     ->where('status', '=', 'selesai')
+        // $pesananselesai = Pesanan::with(['menu_dipesan', 'meja'])
+        //     ->whereIn('status', ['selesai'])
         //     ->orderBy('waktu_pesan')
         //     ->groupBy('id_pesanan')
         //     ->get();
@@ -40,8 +40,12 @@ class ControllerPesananSelesai extends Controller
                     $harga = 'Rp. ' . number_format($row->total_harga, 0, ',', '.');
                     return $harga;
                 })
+                ->addColumn('id_pesanan', function ($row) {
+                    $id_pesanan = number_format($row->id_pesanan, 0, ',', '.');
+                    return $id_pesanan;
+                })
                 ->addColumn('action', 'detail')
-                ->rawColumns(['total_harga', 'action'])
+                ->rawColumns(['total_harga', 'action', 'id_pesanan'])
                 ->addIndexColumn()
                 ->make(true);
         }
@@ -50,6 +54,17 @@ class ControllerPesananSelesai extends Controller
 
         //return collection of posts as a resource
 
+    }
+    public function getMultiFilterSelect()
+    {
+        return view('pesanan');
+    }
+
+    public function getMultiFilterSelectData()
+    {
+        $pesananselesai = Pesanan::select(['id_pesanan', 'no_meja', 'status']);
+
+        return Datatables::of($pesananselesai)->make(true);
     }
 
     /**
@@ -82,11 +97,11 @@ class ControllerPesananSelesai extends Controller
     public function tampil($id_pesanan)
     {
         $pesananselesai = Pesanan::find($id_pesanan);
-        $pesananselesai = Pesanan::with(['menu_dipesan', 'meja'])
-            ->whereIn('status', ['selesai'])
-            ->orderBy('waktu_pesan')
-            ->groupBy('id_pesanan')
-            ->get();
+        // $pesananselesai = Pesanan::with(['menu_dipesan', 'meja'])
+        //     ->whereIn('status', ['selesai'])
+        //     ->orderBy('waktu_pesan')
+        //     ->groupBy('id_pesanan')
+        //     ->get();
 
         return response()->json([
             'status' => 'success',

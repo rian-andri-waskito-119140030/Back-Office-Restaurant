@@ -44,6 +44,7 @@
     <div class="content">
         <div class="header-content">
             <h2>Feedback</h2>
+            <a class="" href="{{ route('signout') }}" style="position:absolute;right:10px;top:10px;"><button type="button" class="btn btn-danger">Log Out</button></a>
         </div>
 
         <div class="body-content bg-white py-5">
@@ -62,10 +63,9 @@
                             <thead style="background-color: black;">
                                 <tr>
                                     <th style="color: white">No</th>
-                                    <th style="color: white">ID Pesanan</th>
-                                    <th style="color: white">Nama Menu</th>
+                                    <th style="color: white">ID Feedback</th>
                                     <th style="color: white">Feedback</th>
-                                    <!-- <th width="20%" style="color: white">Action</th> -->
+                                    <th width="20%" style="color: white">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -96,25 +96,19 @@
                     name: 'DT_RowIndex'
                 },
                 {
-                    data: 'id_pesanan',
-                    name: 'id_pesanan'
-                },
-                {
-                    data: 'nama_menu',
-                    name: 'nama_menu'
+                    data: 'id_feedback',
+                    name: 'id_feedback'
                 },
                 {
                     data: 'isi_feedback',
                     name: 'isi_feedback'
                 },
-
-
-                // {
-                //   data: 'action',
-                //   name: 'action',
-                //   orderable: false,
-                //   searchable: false
-                // },
+                {
+                    data: 'action',
+                    name: 'action',
+                    orderable: false,
+                    searchable: false
+                },
             ],
             // dom: 'Bfrtip',
             // buttons: [

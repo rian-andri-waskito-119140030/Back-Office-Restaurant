@@ -33,6 +33,7 @@
     <!-- header -->
     <div class="header-content pt-2">
       <h2>Edit Menu</h2>
+      <a class="" href="{{ route('signout') }}" style="position:absolute;right:10px;top:20px;"><button type="button" class="btn btn-danger">Log Out</button></a>
     </div>
     <!-- header -->
 
@@ -51,7 +52,7 @@
                 <div class="form-group mx-auto">
                   <div class="mb-3">
                     <label for="">Gambar</label>
-                    <img src="{{asset('storage/menu/' .$menu->gambar)}}" width="100px" alt="{{$menu->nama_menu}}">
+                    <img src="{{asset('storage/menu/' .$menu->gambar)}}" width="100px" alt="{{$menu->nama_menu}}" class="img-fluid">
 
                     <input type="file" class="form-control" name="gambar" value="{{ $menu->gambar }}">
                   </div>

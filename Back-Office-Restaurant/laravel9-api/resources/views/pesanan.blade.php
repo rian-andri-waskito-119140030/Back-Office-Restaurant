@@ -15,8 +15,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script> -->
-    <script type="text/javascript" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.0/moment.min.js"></script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/js/tempusdominus-bootstrap-4.min.js"></script> -->
@@ -41,7 +42,8 @@
 
     <div class="content">
         <div class="header-content">
-            <h2>Hasil Pesanan Pelanggan</h2>
+            <h2>Riwayat Pesanan Pelanggan</h2>
+            <a class="" href="{{ route('signout') }}" style="position:absolute;right:10px;top:10px;"><button type="button" class="btn btn-danger">Log Out</button></a>
         </div>
 
         <div class="body-content bg-white py-5">
@@ -55,10 +57,12 @@
                 <div class="card-body">
                     <div class="table-responsive">
                         <table id="example2" class="table table-bordered data-table" style="background-color: #6eced9">
+
                             <thead style="background-color: black">
                                 <tr>
                                     <th style="color: white">No</th>
-                                    <th style="color: white">ID Pesanan</th>
+                                    <th id="id_pesanan" style="color: white">ID Pesanan</th>
+                                    <th style="color: white">Nomor Meja</th>
                                     <th style="color: white">Total Harga</th>
                                     <th style="color: white">
                                         Status Pesanan
@@ -70,6 +74,7 @@
                                 </tr>
                             </thead>
                             <tbody></tbody>
+
                         </table>
                     </div>
                     <!-- close div card code -->
@@ -89,31 +94,24 @@
                     <h5 class="modal-title" id="exampleModalLabel">Detail Pesanan</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <input type="hidden" name="id_pesanan" id="id_pesanan">
+                <div class="modal-body pesanan_detail">
+                    <!-- <input type="hidden" name="id_pesanan" id="id_pesanan">
                     <div class="form-group">
                         <label for="name" class="col-sm-2 control-label">Status</label>
                         <div class="col-sm-12">
-                            <select class="form-control" id="status" class="status" value="status" placeholder="pilih status">
-
-                                <option>di masak</option>
-                                <option>selesai</option>
-                                <option>cancel</option>
-
-                            </select>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="name" class="col-sm-2 control-label">Status</label>
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" id="nama_menu" class="nama_menu" value="nama_menu" placeholder="nama_menu">
+                            <p id="nama_menu" class="nama_menu" value="nama_menu" placeholder="nama_menu"></p>
                         </div>
                     </div>
                     <div class="col-sm-offset-2 col-sm-10 mt-3">
                         <button type="submit" class="btn btn-primary update-pesanan" id="saveBtn" value="create">Save changes
                         </button>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="modal-footer">
                 </div>
@@ -141,25 +139,33 @@
                 {
                     data: "id_pesanan",
                     name: "id_pesanan",
+
+                },
+                {
+                    data: "no_meja",
+                    name: "no_meja",
                     searchable: true,
                 },
                 {
                     data: "total_harga",
                     name: "total_harga",
+                    searchable: true,
                 },
                 {
                     data: "status",
                     name: "status",
+                    searchable: true,
                 },
-
                 {
                     data: "action",
                     name: "action",
                     orderable: false,
                     searchable: false,
                 },
+
             ],
         });
+
         $("body").on("click", ".delete", function() {
             if (confirm("Delete Record?") == true) {
                 var id_menu = $(this).attr("data-id");
@@ -191,12 +197,25 @@
                 dataType: 'json',
                 success: function(response) {
                     console.log(response);
-                    if (response.status == 404) {
-                        console.log(response.message);
-                    } else {
-                        $('#nama_menu').val(response.pesananselesai.nama_menu);
-                        $('#id_pesanan').val(id_pesanan);
-                    }
+                    var html = '';
+                    html += `<input type="hidden" name="id_pesanan" id="id_pesanan">`;
+                    html += `<div class="form-group">`;
+                    html += `<label for="name" class="col-sm-2 control-label">Status</label>`;
+                    html += `<div class="col-sm-12">`;
+                    html += `</div>`;
+                    html += `</div>`;
+                    html += `<div class="form-group">`;
+                    html += `<label for="name" class="col-sm-2 control-label">Status</label>`;
+                    html += `<div class="col-sm-12">`;
+                    html += `<p id="nama_menu" class="nama_menu" value="nama_menu" placeholder="nama_menu"></p>`;
+                    html += `</div>`;
+                    html += `</div>`;
+                    html += `<div class="col-sm-offset-2 col-sm-10 mt-3">`;
+                    // html += `<button type="submit" class="btn btn-primary update-pesanan" id="saveBtn" value="create">Save changes`;
+                    // html += `</button>`;
+                    html += `<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>`;
+                    html += `</div>`;
+                    $('.pesanan_detail').append(html);
                 }
             })
         });

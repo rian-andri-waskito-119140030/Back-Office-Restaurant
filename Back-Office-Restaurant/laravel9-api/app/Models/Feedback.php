@@ -11,4 +11,9 @@ class Feedback extends Model
     protected $table = 'feedback';
     protected $primaryKey = 'id_feedback';
     protected $fillable = ['id_pesanan', 'isi_feedback'];
+
+    public function pesanan()
+    {
+        return $this->belongsTo(Pesanan::class, 'id_pesanan');
+    }
 }

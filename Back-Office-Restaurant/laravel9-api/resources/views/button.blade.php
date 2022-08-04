@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <a href="{{ route('menu_dipesan.tampilpesanan', $id_pesanan) }}"><button class="btn btn-primary btn-sm">Detail</button></a>
+    <a href="{{ route('rincian.rincian', $id_feedback) }}"><button class="btn btn-primary btn-sm">Detail</button></a>
 </body>
 
 </html>

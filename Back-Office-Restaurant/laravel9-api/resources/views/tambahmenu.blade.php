@@ -33,6 +33,7 @@
     <!-- header -->
     <div class="header-content pt-2">
       <h2>Tambah Menu</h2>
+      <a class="" href="{{ route('signout') }}" style="position:absolute;right:10px;top:20px;"><button type="button" class="btn btn-danger">Log Out</button></a>
     </div>
     <!-- header -->
 

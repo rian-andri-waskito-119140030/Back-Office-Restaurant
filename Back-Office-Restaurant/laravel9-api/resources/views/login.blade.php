@@ -19,7 +19,11 @@
 </head>
 
 <body style="background-image: url(../images/resto.png); background-size:cover; overflow-x: hidden;">
-
+    @auth
+    <script>
+        window.location.href = "{{ url('/beranda') }}";
+    </script>
+    @endauth
     <main class="login-form mt-5">
         <div class="container mt-5">
             <div class="row justify-content-center mt-5">

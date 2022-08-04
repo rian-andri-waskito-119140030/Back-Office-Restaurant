@@ -26,4 +26,9 @@ class Pesanan extends Model
     {
         return $this->belongsTo(Meja::class, 'no_meja');
     }
+
+    public function feedback()
+    {
+        return $this->hasMany(Feedback::class, 'id_pesanan')->with('pesanan');
+    }
 }

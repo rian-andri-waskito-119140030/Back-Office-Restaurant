@@ -50,7 +50,8 @@
 
   <div class="content">
     <div class="header-content">
-      <h2>Laporan</h2>
+      <h2>Laporan Harian</h2>
+      <a class="" href="{{ route('signout') }}" style="position:absolute;right:10px;top:10px;"><button type="button" class="btn btn-danger">Log Out</button></a>
     </div>
 
     <div class="body-content bg-white py-5">
@@ -112,7 +113,7 @@
       ],
       dom: 'Bfrtip',
       buttons: [
-        'copyHtml5',
+        'print',
         'excelHtml5',
         'pdfHtml5'
       ]

@@ -9,6 +9,11 @@ use App\Http\Controllers\Api\ControllerFeedback;
 use App\Http\Controllers\Api\ControllerDiskon;
 use App\Http\Controllers\Api\ControllerKategori;
 use App\Http\Controllers\CustomAuthController;
+use App\Http\Controllers\Api\TampilPesananController;
+use App\Http\Controllers\Api\ControllerRincian;
+use App\Http\Middleware\RedirectIfAuthenticated;
+use Illuminate\Support\Facades\Auth;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -44,11 +49,21 @@ Route::get('pesananselesai', [ControllerPesananSelesai::class, 'detail'])->name(
 Route::get('tampil-pesanan-selesai/{id_pesanan}', [ControllerPesananSelesai::class, 'tampil']);
 Route::get('laporanmasuk', [ControllerLaporanMasuk::class, 'index']);
 Route::get('login', [CustomAuthController::class, 'index'])->name('login');
+//Route::get('login', [CustomAuthController::class, 'dashboard'])->name('login');
+Route::post('login', ['as' => 'login', 'uses' => [CustomAuthController::class, 'customLogin']]);
 Route::post('custom-login', [CustomAuthController::class, 'customLogin'])->name('login.custom');
 Route::get('registration', [CustomAuthController::class, 'registration'])->name('register-user');
 Route::post('custom-registration', [CustomAuthController::class, 'customRegistration'])->name('register.custom');
 Route::get('signout', [CustomAuthController::class, 'signOut'])->name('signout');
+Route::resource('menu_dipesan', TampilPesananController::class);
+Route::get('menu_dipesan/{$id_pesanan}', [TampilPesananController::class, 'tampilpesanan'])->name('menu_dipesan.tampilpesanan');
+Route::resource('rincian', ControllerRincian::class);
+Route::get('rincian/{$id_feedback}', [ControllerRincian::class, 'rincian'])->name('rincian.rincian');
+//Route::get('show-feedback', [ControllerRincian::class, 'show'])->name('show-feedback');
 Route::get('/', function () {
+    return view('login');
+});
+Route::get('/login', function () {
     return view('login');
 });
 Route::get('/beranda', function () {
@@ -96,6 +111,9 @@ Route::get('/diskon', function () {
 Route::get('/tampildiskon', function () {
     return view('tampildiskon');
 });
-Route::get('/detail', function () {
-    return view('detail');
+Route::get('/detail_pesanan', function () {
+    return view('detail_pesanan');
+})->middleware('auth');
+Route::get('/rincian', function () {
+    return view('rincian');
 });

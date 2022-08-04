@@ -34,6 +34,7 @@
   <div class="content">
     <div class="header-content">
       <h2>Kitchen Display</h2>
+      <a class="" href="{{ route('signout') }}" style="position:absolute;right:10px;top:10px;"><button type="button" class="btn btn-danger">Log Out</button></a>
     </div>
 
     <div class="body-content">

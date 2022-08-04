@@ -22,4 +22,9 @@ class Menu_dipesan extends Model
     {
         return $this->belongsTo(Menu::class, 'id_menu');
     }
+
+    public function pesanan()
+    {
+        return $this->belongsTo(Pesanan::class, 'id_pesanan');
+    }
 }

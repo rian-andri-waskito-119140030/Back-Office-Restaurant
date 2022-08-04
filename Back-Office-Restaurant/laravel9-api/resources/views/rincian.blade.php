@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://kit.fontawesome.com/25495e258e.js" crossorigin="anonymous"></script>
-    <link rel="icon" href="https://w7.pngwing.com/pngs/518/893/png-transparent-computer-icons-purchase-order-business-clipboard-business-angle-text-service.png" type="image/x-icon" />
+    <link rel="icon" href="https://www.freepnglogos.com/uploads/logo-home-png/chimney-home-icon-transparent-1.png" type="image/x-icon" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/fontawesome.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -15,7 +15,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/all.css'); }}">
 
-    <title>Detail Pesanan</title>
+    <title>Detail Feedback</title>
 </head>
 
 <body style="background-image: url(../images/resto.png); background-size:cover; overflow-x: hidden;">
@@ -36,42 +36,45 @@
 
     <div class="content">
         <div class="header-content">
-            <h2>Detail Pesanan</h2>
+            <h2>Detail Feedback</h2>
             <a class="" href="{{ route('signout') }}" style="position:absolute;right:10px;top:10px;"><button type="button" class="btn btn-danger">Log Out</button></a>
         </div>
-        @foreach($menu_dipesan as $p)
+        @foreach($rincian as $feedback)
         <div class="body-content">
             <div class="container-fluid" style="justify-content: center;">
                 <div class="box">
                     <div class="card">
 
+
                         <div class="card-header" style="background-color: #6ECED9">
-                            <h2>Pesanan {{$p->status}}</h2>
+                            <h2>ID Pesanan {{$feedback->pesanan->id_pesanan}}</h2>
                         </div>
                         <div class="card-body">
-                            <h5 style="margin-left: 15px; margin-bottom: 15px;">Waktu Pesan : {{$p->waktu_pesan}}</h5>
+
                             <div class="row mx-auto">
 
-                                @foreach($p->menu_dipesan as $m)
-                                <div class="col-md-2">
-                                    <img src="{{ URL::asset('storage/menu/'.$m->menu->gambar) }}" alt="{{$m->menu->nama_menu}}" class="img-fluid">
-                                </div>
+                                @foreach($feedback->pesanan->menu_dipesan as $detail)
+
+
+
                                 <div class="col-md-10">
-                                    <h5>Nama Menu : {{$m->menu->nama_menu}}</h5>
-                                    <p>Deskripsi : {{$m->menu->deskripsi}}</p>
-                                    <p>Jumlah : {{$m->jumlah}}</p>
-                                    <p>Harga : {{$m->harga_peritem}}</p>
+                                    <p>Nama Pesanan : {{$detail->menu->nama_menu}}</p>
+
                                 </div>
                                 @endforeach
 
                             </div>
-                            <h4 style="margin-left: 15px;">Total Harga : {{$p->total_harga}}</h4>
+                            <p style="margin-left: 15px;">Feedback : {{$feedback->isi_feedback}}</p>
                         </div>
 
                     </div>
                 </div>
             </div>
-            @endforeach
+        </div>
+        @endforeach
+
+
+
 </body>
 
 </html>
