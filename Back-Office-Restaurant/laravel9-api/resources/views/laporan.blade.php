@@ -7,8 +7,8 @@
   <link rel="icon" href="https://img2.pngdownload.id/20180618/jup/kisspng-computer-icons-document-logo-raport-5b2730482286a6.2061352515292949201414.jpg" type="image/x-icon" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
-  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css"> -->
-  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" /> -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.dataTables.min.css" />
   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/css/tempusdominus-bootstrap-4.min.css" /> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://kit.fontawesome.com/25495e258e.js" crossorigin="anonymous"></script>
@@ -19,6 +19,13 @@
   <script type="text/javascript" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
   <script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.0/moment.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.colVis.min.js"></script>
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/js/tempusdominus-bootstrap-4.min.js"></script> -->
   <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/all.css'); }}">
   <title>Laporan</title>
@@ -50,8 +57,8 @@
       <div class="container">
         <div class="row">
           <div class="col-12 text-center">
-            <a href="{{ url('/laporanmasuk') }}"><button class="btn btn-large btn-success">Tambah Laporan</button></a>
-            <a href="{{ url('/unduhlaporan') }}"><button class="btn btn-large btn-success">Unduh Laporan</button></a>
+            <!-- <a href="{{ url('/laporanmasuk') }}"><button class="btn btn-large btn-success">Tambah Laporan</button></a> -->
+            <!-- <a href="{{ url('/unduhlaporan') }}"><button class="btn btn-large btn-success">Unduh Laporan</button></a> -->
 
 
           </div>
@@ -63,11 +70,8 @@
               <thead style="background-color: black;">
                 <tr>
                   <th style="color: white">No</th>
-                  <th style="color: white">Hari</th>
                   <th style="color: white">Tanggal</th>
                   <th style="color: white">Pemasukan</th>
-
-                  <th width="20%" style="color: white">Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -98,36 +102,27 @@
           name: 'DT_RowIndex'
         },
         {
-          data: 'hari',
-          name: 'hari'
-        },
-        {
           data: 'tanggal',
           name: 'tanggal'
         },
         {
-          data: 'pemasukan',
-          name: 'pemasukan'
-        },
-
-        {
-          data: 'action',
-          name: 'action',
-          orderable: false,
-          searchable: false
+          data: 'total_harga',
+          name: 'total_harga'
         },
       ],
-      // dom: 'Bfrtip',
-      // buttons: [
-      //   'copy', 'csv', 'excel', 'pdf', 'print'
-      // ]
+      dom: 'Bfrtip',
+      buttons: [
+        'copyHtml5',
+        'excelHtml5',
+        'pdfHtml5'
+      ]
     });
 
     // $(document).ready(function() {
-    //   $('#example').DataTable({
+    //   $('#example2').DataTable({
     //     dom: 'Bfrtip',
     //     buttons: [
-    //       'copy', 'csv', 'excel', 'pdf', 'print'
+    //       'excel', 'pdf', 'print'
     //     ]
     //   });
     // });

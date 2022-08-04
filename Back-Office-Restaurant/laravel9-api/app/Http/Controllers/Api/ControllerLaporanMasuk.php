@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\LaporanMasuk;
+use App\Models\Pesanan;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Resources\LaporanMasukResource;
@@ -18,15 +19,23 @@ class ControllerLaporanMasuk extends Controller
     {
         //get posts
         $laporanmasuk = LaporanMasuk::oldest();
+
+        //dd($laporanmasuk);
         if ($request->ajax()) {
-            $laporanmasuk = DB::table('laporan_masuk')->select('*')->get();
+            $laporanmasuk = Pesanan::select(
+                "id_pesanan",
+                DB::raw("(sum(total_harga)) as total_harga"),
+                DB::raw("(DATE_FORMAT(waktu_pesan, '%d-%m-%Y')) as tanggal")
+            )
+                ->orderBy('waktu_pesan')
+                ->groupBy(DB::raw("DATE_FORMAT(waktu_pesan, '%d-%m-%Y')"))
+                ->get();
             return DataTables::of($laporanmasuk)
-                ->addColumn('pemasukan', function ($row) {
-                    $harga = 'Rp. ' . number_format($row->pemasukan, 0, ',', '.');
+                ->addColumn('total_harga', function ($row) {
+                    $harga = 'Rp. ' . number_format($row->total_harga, 0, ',', '.');
                     return $harga;
                 })
-                ->addColumn('action', 'aksi')
-                ->rawColumns(['pemasukan', 'action'])
+                ->rawColumns(['total_harga'])
 
                 ->addIndexColumn()
                 ->make(true);

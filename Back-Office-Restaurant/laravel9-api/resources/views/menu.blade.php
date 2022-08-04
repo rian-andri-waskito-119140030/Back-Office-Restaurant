@@ -22,6 +22,7 @@
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/js/tempusdominus-bootstrap-4.min.js"></script> -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/fontawesome.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" />
+
   <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/all.css'); }}">
   <title>MENU</title>
 </head>
@@ -46,6 +47,7 @@
   <div class="content">
     <div class="header-content">
       <h2>Menu</h2>
+      <a class="" href="{{ route('signout') }}" style="position:absolute;right:10px;top:10px;"><button type="button" class="btn btn-danger">Log Out</button></a>
     </div>
 
     <div class="body-content bg-white py-5">
@@ -54,6 +56,7 @@
           <div class="col-12 text-center">
 
             <a href="{{ url('/tambahmenu') }}"><button class="btn btn-large btn-success">Tambah Menu</button></a>
+            <!-- <a href="{{ route('kategori.index') }}"><button class="btn btn-large btn-success">Tambah Diskon Menu</button></a> -->
           </div>
         </div>
 
@@ -136,7 +139,7 @@
       ]
     });
     $('body').on('click', '.delete', function() {
-      if (confirm("Delete Record?") == true) {
+      if (confirm("Hapus Menu?") == true) {
         var id_menu = $(this).attr('data-id');
         console.log("{{ csrf_token() }}");
         // ajax

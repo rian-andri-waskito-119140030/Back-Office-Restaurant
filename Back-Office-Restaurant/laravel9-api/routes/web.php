@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\ControllerLaporanMasuk;
 use App\Http\Controllers\Api\ControllerFeedback;
 use App\Http\Controllers\Api\ControllerDiskon;
 use App\Http\Controllers\Api\ControllerKategori;
+use App\Http\Controllers\CustomAuthController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,6 +20,7 @@ use App\Http\Controllers\Api\ControllerKategori;
 |
 */
 
+Route::get('laporan-masuk', [ControllerLaporanMasuk::class, 'index']);
 Route::get('menu/delete', [ControllerMenu::class, 'delete'])->name('menu.delete');
 Route::get('laporanmasuk/delete', [ControllerLaporanMasuk::class, 'delete'])->name('laporanmasuk.delete');
 // Route::get('menu', [ControllerMenu::class, 'index'])->name('menu.index');
@@ -36,18 +38,25 @@ Route::get('pesanan-datang', [ControllerPesanan::class, 'index']);
 Route::get('diskon-menu', [ControllerDiskon::class, 'index'])->name('diskon-menu.index');
 Route::get('feedback-menu', [ControllerFeedback::class, 'index'])->name('feedback-menu.index');
 Route::get('tampil-diskon', [ControllerDiskon::class, 'tampildiskon'])->name('tampil-diskon.tampildiskon');
-Route::get('', [ControllerPesanan::class, 'index']);
+//Route::get('', [ControllerPesanan::class, 'index']);
 Route::get('pesanan-selesai', [ControllerPesananSelesai::class, 'index']);
+Route::get('pesananselesai', [ControllerPesananSelesai::class, 'detail'])->name('pesananselesai.detail');
+Route::get('tampil-pesanan-selesai/{id_pesanan}', [ControllerPesananSelesai::class, 'tampil']);
 Route::get('laporanmasuk', [ControllerLaporanMasuk::class, 'index']);
+Route::get('login', [CustomAuthController::class, 'index'])->name('login');
+Route::post('custom-login', [CustomAuthController::class, 'customLogin'])->name('login.custom');
+Route::get('registration', [CustomAuthController::class, 'registration'])->name('register-user');
+Route::post('custom-registration', [CustomAuthController::class, 'customRegistration'])->name('register.custom');
+Route::get('signout', [CustomAuthController::class, 'signOut'])->name('signout');
 Route::get('/', function () {
-    return view('beranda');
+    return view('login');
 });
 Route::get('/beranda', function () {
     return view('beranda');
-});
+})->middleware('auth');
 Route::get('/menu', function () {
     return view('menu');
-});
+})->middleware('auth');
 Route::get('/tambahmenu', function () {
     return view('tambahmenu');
 });
@@ -62,19 +71,19 @@ Route::get('hapus', function () {
 });
 Route::get('/kitchendisplay', function () {
     return view('Kitchendisplay');
-});
+})->middleware('auth');
 Route::get('/pesanan', function () {
     return view('pesanan');
-});
+})->middleware('auth');
 Route::get('/laporan', function () {
     return view('laporan');
-});
+})->middleware('auth');
 Route::get('/laporanmasuk', function () {
     return view('laporanmasuk');
-});
+})->middleware('auth');
 Route::get('/feedback', function () {
     return view('feedback');
-});
+})->middleware('auth');
 Route::get('/editlaporan', function () {
     return view('editlaporan');
 });
@@ -86,4 +95,7 @@ Route::get('/diskon', function () {
 });
 Route::get('/tampildiskon', function () {
     return view('tampildiskon');
+});
+Route::get('/detail', function () {
+    return view('detail');
 });

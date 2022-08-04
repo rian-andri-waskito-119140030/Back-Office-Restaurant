@@ -50,11 +50,11 @@
                   <div class="form-group mx-auto">
                     <div class="mb-3">
                       <label for="">Gambar</label>
-                      <input type="file" class="form-control" name="gambar">
+                      <input type="file" class="form-control" name="gambar" required>
                     </div>
                     <div class="mb-3">
                       <label for="">Nama Menu</label>
-                      <input type="text" class="form-control" name="nama_menu">
+                      <input type="text" class="form-control" name="nama_menu" required>
                     </div>
                     <div class="mb-3">
                       <label for="exampleFormControlSelect1">Tipe Produk</label>
@@ -67,19 +67,19 @@
                     </div>
                     <div class="mb-3">
                       <label for="">Harga Modal</label>
-                      <input type="text" class="form-control" name="harga_modal">
+                      <input type="text" class="form-control" name="harga_modal" required>
                     </div>
                     <div class="mb-3">
                       <label for="">Harga Jual</label>
-                      <input type="text" class="form-control" name="harga_jual">
+                      <input type="text" class="form-control" name="harga_jual" required>
                     </div>
                     <div class="mb-3">
                       <label for="">Stok</label>
-                      <input type="text" class="form-control" name="stok">
+                      <input type="text" class="form-control" name="stok" required>
                     </div>
                     <div class="mb-3">
                       <label for="">Deskripsi</label>
-                      <input type="textarea" class="form-control" name="deskripsi">
+                      <input type="textarea" class="form-control" name="deskripsi" required>
                     </div>
 
                     <button width="20%" type="submit" class="btn-success mx-auto" style="

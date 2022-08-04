@@ -22,4 +22,8 @@ class Pesanan extends Model
         return $this->hasMany(Menu_dipesan::class, 'id_pesanan')->with('menu');
     }
 
+    public function meja()
+    {
+        return $this->belongsTo(Meja::class, 'no_meja');
+    }
 }

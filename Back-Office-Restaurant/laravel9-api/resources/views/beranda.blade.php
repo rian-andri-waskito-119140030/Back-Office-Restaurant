@@ -9,6 +9,10 @@
   <link rel="icon" href="https://www.freepnglogos.com/uploads/logo-home-png/chimney-home-icon-transparent-1.png" type="image/x-icon" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/fontawesome.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/all.css'); }}">
 
   <title>BERANDA</title>
@@ -34,6 +38,7 @@
     <div class="header-content">
       <h2>Beranda</h2>
       <span>Selamat Datang Di Restoran</span>
+      <a class="" href="{{ route('signout') }}" style="position:absolute;right:10px;top:20px;"><button type="button" class="btn btn-danger">Log Out</button></a>
     </div>
 
     <div class="body-content">
@@ -43,34 +48,34 @@
           <a href="{{ url('/menu') }}">
             <div>
               <i class="fa-4x fa-solid fa-book"></i>
-              <span>Menu</span>
+              <p style="margin-top: 20px; font-weight: bold">Menu</p>
             </div>
           </a>
 
           <a href="{{ url('/kitchendisplay') }}">
             <div>
               <i class="fa-4x fa-solid fa-user-group"></i>
-              <span>Kitchen Display</span>
+              <p style="margin-top: 20px; font-weight: bold">Kitchen Display</p>
             </div>
           </a>
 
           <a href="{{ url('/pesanan') }}">
             <div>
               <i class="fa-4x fa-solid fa-hand-holding-dollar"></i>
-              <span>Pesanan Selesai</span>
+              <p style="margin-top: 20px; font-weight: bold">Pesanan Selesai</p>
             </div>
           </a>
 
           <a href="{{ url('/laporan') }}">
             <div>
               <i class="fa-4x fa-solid fa-clipboard"></i>
-              <span>Laporan</span>
+              <p style="margin-top: 20px; font-weight: bold">Laporan</p>
             </div>
           </a>
           <a href="{{ url('/feedback') }}">
             <div>
               <i class="fa-4x fa-solid fa-comments"></i>
-              <span>Feedback</span>
+              <p style="margin-top: 20px; font-weight: bold">Feedback</p>
             </div>
           </a>
 
