@@ -19,8 +19,15 @@ class ControllerLaporanMasuk extends Controller
     {
         //get posts
         $laporanmasuk = LaporanMasuk::oldest();
-
-        //dd($laporanmasuk);
+        // $laporanmasuk = Pesanan::select(
+        //     "id_pesanan",
+        //     DB::raw("(sum(total_harga)) as total_harga"),
+        //     DB::raw("(DATE_FORMAT(waktu_pesan, '%d-%m-%Y')) as tanggal")
+        // )
+        //     ->orderBy('waktu_pesan')
+        //     ->groupBy(DB::raw("DATE_FORMAT(waktu_pesan, '%d-%m-%Y')"))
+        //     ->get();
+        // dd($laporanmasuk);
         if ($request->ajax()) {
             $laporanmasuk = Pesanan::select(
                 "id_pesanan",

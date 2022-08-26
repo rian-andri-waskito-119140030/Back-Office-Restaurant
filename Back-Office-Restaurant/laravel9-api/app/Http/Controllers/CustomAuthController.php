@@ -29,7 +29,7 @@ class CustomAuthController extends Controller
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
             return redirect()->intended('beranda')
-                ->withSuccess('Signed in');
+                ->withSuccess('Berhasil Login');
         }
 
         $errors = new MessageBag(['password' => ['Email or password is incorrect.']]);

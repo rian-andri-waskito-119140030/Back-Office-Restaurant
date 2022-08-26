@@ -137,6 +137,7 @@
           searchable: false
         },
       ]
+      
     });
     $('body').on('click', '.delete', function() {
       if (confirm("Hapus Menu?") == true) {
@@ -159,6 +160,7 @@
         });
       }
     });
+    
   });
 </script>
 

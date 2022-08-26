@@ -46,7 +46,7 @@
                     <div class="card">
 
                         <div class="card-header" style="background-color: #6ECED9">
-                            <h2>Pesanan {{$p->status}}</h2>
+                            <h2>Status Pesanan {{$p->status}}</h2>
                         </div>
                         <div class="card-body">
                             <h5 style="margin-left: 15px; margin-bottom: 15px;">Waktu Pesan : {{$p->waktu_pesan}}</h5>

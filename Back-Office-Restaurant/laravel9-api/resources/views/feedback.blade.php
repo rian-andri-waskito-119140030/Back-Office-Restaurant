@@ -65,7 +65,7 @@
                                     <th style="color: white">No</th>
                                     <th style="color: white">ID Feedback</th>
                                     <th style="color: white">Feedback</th>
-                                    <th width="20%" style="color: white">Action</th>
+                                    <th width="8%" style="color: white">Action</th>
                                 </tr>
                             </thead>
                             <tbody>

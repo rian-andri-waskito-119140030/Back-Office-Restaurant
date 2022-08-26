@@ -11,14 +11,14 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/all.css'); }}">
 
   <title>BERANDA</title>
 </head>
 
-<body style="background-image: url(../images/resto.png); background-size:cover; overflow-x: hidden;">
+<body style="background-image: url(../images/resto.png); background-size:cover;">
 
   <div class="sidebar">
     <h2>BACK OFFICE</h2>
@@ -35,18 +35,20 @@
   </div>
 
   <div class="content">
+
     <div class="header-content">
+
       <h2>Beranda</h2>
       <span>Selamat Datang Di Restoran</span>
       <a class="" href="{{ route('signout') }}" style="position:absolute;right:10px;top:20px;"><button type="button" class="btn btn-danger">Log Out</button></a>
     </div>
 
     <div class="body-content">
-      <div class="container">
+      <div class="container-fluid">
         <div class="box">
 
           <a href="{{ url('/menu') }}">
-            <div>
+            <div class="col">
               <i class="fa-4x fa-solid fa-book"></i>
               <p style="margin-top: 20px; font-weight: bold">Menu</p>
             </div>
@@ -81,7 +83,7 @@
 
         </div>
       </div>
-
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 
 </html>

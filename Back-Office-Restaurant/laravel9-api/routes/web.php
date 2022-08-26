@@ -59,6 +59,8 @@ Route::resource('menu_dipesan', TampilPesananController::class);
 Route::get('menu_dipesan/{$id_pesanan}', [TampilPesananController::class, 'tampilpesanan'])->name('menu_dipesan.tampilpesanan');
 Route::resource('rincian', ControllerRincian::class);
 Route::get('rincian/{$id_feedback}', [ControllerRincian::class, 'rincian'])->name('rincian.rincian');
+Route::get('menureservasi', [ControllerMenu::class, 'index'])->name('menureservasi.index');
+Route::get('report', [ControllerLaporanMasuk::class, 'index'])->name('report.index');
 //Route::get('show-feedback', [ControllerRincian::class, 'show'])->name('show-feedback');
 Route::get('/', function () {
     return view('login');

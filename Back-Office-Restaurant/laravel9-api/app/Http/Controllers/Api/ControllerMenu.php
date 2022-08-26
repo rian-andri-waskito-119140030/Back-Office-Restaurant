@@ -22,6 +22,17 @@ class ControllerMenu extends Controller
     public function index(Request $request)
     {
         // dd(csrf_token());
+        // $menu = DB::table('menu')->selectRaw('
+        //     `id_menu`,
+        //     `nama_menu`,
+        //     CONCAT("http://127.0.0.1:8000/storage/menu/", `gambar`) AS gambar,
+        //     `tipe_produk`,
+        //     `harga_modal`,
+        //     `harga_jual`,
+        //     `stok`,
+        //     `deskripsi`
+        //     ')->get();
+        // dd($menu);
         if ($request->ajax()) {
             $menu = DB::table('menu')->selectRaw('
             `id_menu`,

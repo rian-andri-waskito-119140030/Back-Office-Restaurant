@@ -25,7 +25,7 @@ class ControllerRincian extends Controller
         $rincian = Feedback::with(['pesanan', 'pesanan.menu_dipesan'])
             ->where('id_feedback', $rincian->id_feedback)
             ->get();
-        // dd($rincian);
+        //dd($rincian);
         return view('rincian', compact('rincian'));
     }
 }
