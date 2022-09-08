@@ -12,6 +12,7 @@ use App\Http\Controllers\Api\UjiKitchenDisplayController;
 use App\Http\Controllers\Api\UjiRiwayatPesananController;
 use App\Http\Controllers\Api\UjiLaporanMasukController;
 use App\Http\Controllers\Api\UjiFeedbackController;
+use App\Http\Controllers\Api\UjiLoginController;
 //posts
 
 Route::get('/menu/showtypemakanan', [ControllerMenu::class, 'showTypeMakanan']);
@@ -40,6 +41,7 @@ Route::apiResource('/ujikitchendisplay', UjiKitchenDisplayController::class);
 Route::apiResource('/ujiriwayatpesanan', UjiRiwayatPesananController::class);
 Route::apiResource('/ujilaporanmasuk', UjiLaporanMasukController::class);
 Route::apiResource('/ujifeedback', UjiFeedbackController::class);
+Route::apiResource('/ujilogin', UjiLoginController::class);
 /*
 |--------------------------------------------------------------------------
 | API Routes

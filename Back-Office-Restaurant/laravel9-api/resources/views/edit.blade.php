@@ -38,7 +38,7 @@
     <!-- header -->
 
     <!-- <div class="body-content py-5 bg-white"> -->
-    <div class="container">
+    <div class="container mb-3">
       <div class="box">
         <div class="col-md-4 mx-auto">
           <div class="card">
@@ -52,17 +52,24 @@
                 <div class="form-group mx-auto">
                   <div class="mb-3">
                     <label for="">Gambar</label>
-                    <img src="{{asset('storage/menu/' .$menu->gambar)}}" width="100px" alt="{{$menu->nama_menu}}" class="img-fluid">
+
 
                     <input type="file" class="form-control" name="gambar" value="{{ $menu->gambar }}">
+                    <img src="{{asset('storage/menu/' .$menu->gambar)}}" width="100px" alt="{{$menu->nama_menu}}" class="img-fluid mt-3">
                   </div>
                   <div class="mb-3">
                     <label for="">Nama Menu</label>
                     <input type="text" class="form-control" name="nama_menu" value="{{ $menu->nama_menu }}" required>
                   </div>
                   <div class="mb-3">
-                    <label for="">Tipe Produk</label>
-                    <input type="text" class="form-control" name="tipe_produk" value="{{ $menu->tipe_produk }}" required>
+                    <label for="exampleFormControlSelect1">Tipe Produk</label>
+                    <select class="form-control" name="tipe_produk" id="exampleFormControlSelect1" class="tipe_produk" value="status">
+                      <option value="{{ $menu->tipe_produk }}">{{ $menu->tipe_produk }}</option>
+                      <option>makanan</option>
+                      <option>minuman</option>
+                      <option>dessert</option>
+
+                    </select>
                   </div>
                   <div class="mb-3">
                     <label for="">Harga Modal</label>
